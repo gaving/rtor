@@ -24922,3 +24922,123 @@ Completed in 154ms (View: 9, DB: 0) | 200 OK [http://0.0.0.0/]
 Processing IndexController#index (for 127.0.0.1 at 2009-01-10 16:07:51) [GET]
 Rendering index/index
 Completed in 113ms (View: 9, DB: 0) | 200 OK [http://0.0.0.0/]
+
+
+Processing IndexController#index (for 127.0.0.1 at 2009-01-10 16:11:27) [GET]
+Rendering index/index
+Completed in 224ms (View: 64, DB: 0) | 200 OK [http://0.0.0.0/]
+
+
+Processing IndexController#index (for 127.0.0.1 at 2009-01-10 16:14:01) [GET]
+Rendering index/index
+Completed in 136ms (View: 9, DB: 0) | 200 OK [http://0.0.0.0/]
+
+
+Processing IndexController#index (for 127.0.0.1 at 2009-01-10 16:14:23) [GET]
+Rendering index/index
+Completed in 100ms (View: 9, DB: 0) | 200 OK [http://0.0.0.0/]
+
+
+Processing IndexController#index (for 127.0.0.1 at 2009-01-10 16:14:26) [GET]
+Rendering index/index
+Completed in 103ms (View: 9, DB: 0) | 200 OK [http://0.0.0.0/]
+
+
+Processing IndexController#index (for 127.0.0.1 at 2009-01-10 16:14:32) [GET]
+Rendering index/index
+Completed in 101ms (View: 9, DB: 0) | 200 OK [http://0.0.0.0/]
+
+
+Processing IndexController#index (for 127.0.0.1 at 2009-01-10 16:14:34) [GET]
+Rendering index/index
+Completed in 155ms (View: 9, DB: 0) | 200 OK [http://0.0.0.0/]
+
+
+Processing IndexController#index (for 127.0.0.1 at 2009-01-10 16:15:00) [GET]
+Rendering index/index
+Completed in 102ms (View: 9, DB: 0) | 200 OK [http://0.0.0.0/]
+
+
+Processing IndexController#index (for 127.0.0.1 at 2009-01-10 16:15:02) [GET]
+Rendering index/index
+Completed in 101ms (View: 9, DB: 0) | 200 OK [http://0.0.0.0/]
+
+
+Processing IndexController#index (for 127.0.0.1 at 2009-01-10 16:15:04) [GET]
+Rendering index/index
+Completed in 103ms (View: 9, DB: 0) | 200 OK [http://0.0.0.0/]
+
+
+Processing IndexController#index (for 127.0.0.1 at 2009-01-10 16:15:21) [GET]
+Rendering index/index
+Completed in 101ms (View: 9, DB: 0) | 200 OK [http://0.0.0.0/]
+
+
+Processing IndexController#index (for 127.0.0.1 at 2009-01-10 16:16:09) [GET]
+Rendering index/index
+Completed in 269ms (View: 9, DB: 0) | 200 OK [http://0.0.0.0/]
+
+
+Processing IndexController#index (for 127.0.0.1 at 2009-01-10 16:16:10) [GET]
+Rendering index/index
+Completed in 102ms (View: 9, DB: 0) | 200 OK [http://0.0.0.0/]
+
+
+Processing IndexController#index (for 127.0.0.1 at 2009-01-10 16:16:32) [GET]
+Rendering index/index
+Completed in 101ms (View: 9, DB: 0) | 200 OK [http://0.0.0.0/]
+
+
+Processing IndexController#index (for 127.0.0.1 at 2009-01-10 16:16:34) [GET]
+Rendering index/index
+Completed in 103ms (View: 9, DB: 0) | 200 OK [http://0.0.0.0/]
+
+
+Processing IndexController#index (for 127.0.0.1 at 2009-01-10 16:17:50) [GET]
+Rendering index/index
+Completed in 120ms (View: 9, DB: 0) | 200 OK [http://0.0.0.0/]
+
+
+Processing IndexController#index (for 127.0.0.1 at 2009-01-10 16:18:42) [GET]
+Rendering index/index
+Completed in 177ms (View: 9, DB: 0) | 200 OK [http://0.0.0.0/]
+
+
+Processing IndexController#index (for 127.0.0.1 at 2009-01-10 16:18:44) [GET]
+Rendering index/index
+Completed in 102ms (View: 9, DB: 0) | 200 OK [http://0.0.0.0/]
+
+
+Processing IndexController#index (for 127.0.0.1 at 2009-01-10 16:18:56) [GET]
+Rendering index/index
+Completed in 156ms (View: 9, DB: 0) | 200 OK [http://0.0.0.0/]
+
+
+Processing IndexController#index (for 127.0.0.1 at 2009-01-10 16:19:25) [GET]
+Rendering index/index
+Completed in 102ms (View: 9, DB: 0) | 200 OK [http://0.0.0.0/]
+
+
+Processing IndexController#index (for 127.0.0.1 at 2009-01-10 16:19:26) [GET]
+Rendering index/index
+Completed in 106ms (View: 9, DB: 0) | 200 OK [http://0.0.0.0/]
+
+
+Processing IndexController#index (for 127.0.0.1 at 2009-01-10 16:19:38) [GET]
+Rendering index/index
+Completed in 104ms (View: 9, DB: 0) | 200 OK [http://0.0.0.0/]
+
+
+Processing IndexController#index (for 127.0.0.1 at 2009-01-10 16:21:45) [GET]
+Rendering index/index
+Completed in 153ms (View: 9, DB: 0) | 200 OK [http://0.0.0.0/]
+
+
+Processing IndexController#index (for 127.0.0.1 at 2009-01-10 16:22:00) [GET]
+Rendering index/index
+Completed in 156ms (View: 9, DB: 0) | 200 OK [http://0.0.0.0/]
+
+
+Processing IndexController#index (for 127.0.0.1 at 2009-01-10 16:22:05) [GET]
+Rendering index/index
+Completed in 103ms (View: 9, DB: 0) | 200 OK [http://0.0.0.0/]

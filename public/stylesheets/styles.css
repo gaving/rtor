@@ -1,14 +1,13 @@
 html * { padding:0; margin:0; }
 body * { padding:10px 20px; }
 body * * { padding:0; }
-body { font:small sans-serif; background:#eee; }
-h1 { font-weight:bold; font-family: sans-serif; color:#ccc; margin-bottom:.4em; }
-h1 span { font-size:60%; color:#666; font-weight:normal; }
+body { font:small 'Lucida Grande', sans-serif; background:#eee; }
+h1 { font-weight:bold; font-family: 'Lucida Grande', sans-serif; color:#ccc; margin-bottom:.4em; }
 
 table.main { margin: 1em 1em 0; width: 100%; }
 tr head { border-bottom: 1px solid #463500; }
-tr th { text-align: center; padding: 5px 3px; margin: 0px; font: 10pt Tahoma, sans-serif; }
-tr td { text-align: left; padding: 5px 3px; margin: 0px; font: 8pt Verdana, sans-serif; }
+tr th { text-align: center; padding: 5px 3px; margin: 0px; font-size: 10pt; }
+tr td { text-align: left; padding: 5px 3px; margin: 0px; font-size: 8pt; }
 
 .active {
     background: #F4F4F8;
