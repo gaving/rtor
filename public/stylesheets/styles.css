@@ -1,0 +1,89 @@
+html * { padding:0; margin:0; }
+body * { padding:10px 20px; }
+body * * { padding:0; }
+body { font:small sans-serif; background:#eee; }
+h1 { font-weight:bold; font-family: sans-serif; color:#ccc; margin-bottom:.4em; }
+h1 span { font-size:60%; color:#666; font-weight:normal; }
+
+table.main { margin: 1em 1em 0; width: 100%; }
+tr head { border-bottom: 1px solid #463500; }
+tr th { text-align: center; padding: 5px 3px; margin: 0px; font: 10pt Tahoma, sans-serif; }
+tr td { text-align: left; padding: 5px 3px; margin: 0px; font: 8pt Verdana, sans-serif; }
+
+.active {
+    background: #F4F4F8;
+}
+
+.stopped {
+    background: #DEEBFF;
+}
+
+#header {
+    background: black url(/images/footer-bg.png) repeat-x left top;
+}
+#main { background:#f6f6f6; font-size: x-small; text-align: center; display: none; }
+#main a { color: #000 }
+
+#add-input {
+    margin-top: 10px;
+    display:none; 
+}
+#button-bar {
+    display:none; 
+}
+
+.prog-border { width: 100px; height: 20px; background: #FFF; padding: 3px; border: 1px solid #DDD; }
+.prog-bar { height: 20px; background: url(/images/progress_blue.gif) repeat-x; }
+
+#footer {
+    background: black url(/images/footer-bg.png) repeat-x left top;
+    padding: 3%;
+    font-size: x-small;
+    color: #ccc;
+    overflow: hidden;
+    position: absolute;
+    bottom: 0px;
+    width: 94%
+}
+
+#footer a {
+    color: #729FCF;
+    font-weight: bold;
+    text-decoration: none;
+}
+#footer a:hover {
+    text-decoration: underline;
+}
+
+#footer .column {
+    float: left;
+    width: 20%;
+    margin-right: 3%;
+}
+
+#footer .section {
+    margin-bottom: 1em;
+}
+
+#footer .section p {
+    padding: 8px;
+}
+
+#footer .section h3 {
+    margin: 0;
+    font-size: 140%;
+    margin-bottom: 10px;
+}
+
+#footer .section a img {
+    border: 1px solid #cccccc;
+}
+
+#footer .section ul {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+#footer .section li {
+    margin-left: 40px;
+}

@@ -1,0 +1,18 @@
+h1. Rtorrent on rails
+
+Simple experimental rails application for controlling the popular command line torrent client rtorrent.
+
+h2. Configuration
+
+Configure the path to your scgi enabled rtorrent location within config/config.yml
+
+h2. Usage
+
+In the current directory, run:
+<pre><code>
+script/server
+</code></pre>
+
+to start the internal rails web server.
+
+Now visit http://0.0.0.0:3000 and hopefully view your torrents!

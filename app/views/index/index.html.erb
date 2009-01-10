@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-GB">
+    <head>
+        <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+        <title>rtorrent on rails</title>
+        <link rel="shortcut icon" href="favicon.ico" />
+        <link rel="icon" href="favicon.ico" />
+        <%= stylesheet_link_tag "styles" -%>
+        <%= javascript_include_tag 'jquery' -%>
+        <%= javascript_include_tag 'jquery-ui' -%>
+        <%= javascript_include_tag 'jrails' -%>
+        <%= javascript_include_tag 'jquery.contextmenu.js' -%>
+        <%= javascript_include_tag 'jquery.tablesorter.js' -%>
+        <%= javascript_include_tag 'jquery.tablednd.js' -%>
+        <%= javascript_include_tag 'index.js' -%>
+    </head>
+    <body>
+        <div id="header">
+            <div id="button-bar" style="float: right">
+                <img id="add-button" src="images/add.png" />
+                <input id="add-input" type="text" size="40" />
+            </div>
+            <h1>torrent list</h1>
+        </div>
+        <div id="main">
+            <div class="contextMenu" id="torrentContext">
+                <ul>
+                    <li id="open"><img src="images/open.png" /> Open</li>
+                    <li id="start"><img src="images/start.png" /> Start</li>
+                    <li id="stop"><img src="images/stop.png" /> Stop</li>
+                    <li id="delete"><img src="images/delete.png" /> Delete</li>
+                </ul>
+            </div>
+            <table id="torrentsTable" class="main">
+                <thead>
+                    <tr class="head">
+                        <th></th>
+                        <th>filename</th>
+                        <th>progress</th>
+                        <th>size</th>
+                        <th>remaining</th>
+                        <th>downloaded</th>
+                        <th>uploaded</th>
+                        <th>down</th>
+                        <th>up</th>
+                        <th>ratio</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%- for torrent in @torrents -%>
+                    <tr class="menu" hash="<%= torrent[:hash] -%>" state="<%= torrent[:state] -%>">
+                        <td><img src="images/icons/<%= get_mime_icon torrent[:name] -%>.png" /></td>
+                        <td><a href="info/<%= torrent[:hash] -%>"><%=h torrent[:name] -%></a></td>
+                        <td>
+                            <div class="prog-border">
+                                <div class="prog-bar" style="width: <%= torrent[:percentage] -%>%;">
+                                    <div style="font: 7pt Tahoma, sans-serif; text-align: right;"><%= torrent[:percentage] -%>%</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td><%=h number_to_human_size(torrent[:size]) -%></td>
+                        <td><%=h number_to_human_size(torrent[:down_rate]) -%></td>
+                        <td><%=h number_to_human_size(torrent[:downloaded]) -%></td>
+                        <td><%=h number_to_human_size(torrent[:uploaded]) -%></td>
+                        <td><%=h number_to_human_size(torrent[:down_rate]) -%></td>
+                        <td><%=h number_to_human_size(torrent[:up_rate]) -%></td>
+                        <td title="<%= torrent[:ratio]%>"><img src="images/icons/<%= get_ratio_icon(torrent[:ratio]) -%>.png"/></td>
+                    </tr>
+                    <%- end -%>
+                </tbody>
+            </table>
+        </div>
+        <div id="footer">
+            <div class="column">
+                <div class="section">
+                    <h3>FOLDERS</h3>
+                    <ul>
+                        <%- for folder in @folders -%>
+                            <li style="list-style-image: url(images/icons/folder.png)"> <a href=""><%= folder -%></a></li>
+                        <%- end -%>
+                    </ul>
+                </div>
+            </div>
+            <div class="column" style="width: 50%" id='feed'>
+                <div class="section">
+                    <h3>RSS FEED</h3>
+                        <%- for entry in @feed -%>
+                            <li style="list-style-image: url(static/images/icons/<%= entry[:name] -%>)"><a href="/download/<%= entry[:name] -%>"><%= entry[:name] -%></a></li>
+                        <%- end -%>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
