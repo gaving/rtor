@@ -33,6 +33,7 @@ tr td { text-align: left; padding: 5px 3px; margin: 0px; font-size: 8pt; }
 
 .prog-border { width: 100px; height: 20px; background: #FFF; padding: 3px; border: 1px solid #DDD; }
 .prog-bar { height: 20px; background: url(/images/progress_blue.gif) repeat-x; }
+.prog-text { font-family: 'Lucida Grande'; font-size: 7pt; text-align: right }
 
 #footer {
     background: black url(/images/footer-bg.png) repeat-x left top;

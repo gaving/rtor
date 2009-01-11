@@ -6,14 +6,16 @@
         <title>rtorrent on rails</title>
         <link rel="shortcut icon" href="favicon.ico" />
         <link rel="icon" href="favicon.ico" />
-        <%= stylesheet_link_tag "styles" -%>
-        <%= javascript_include_tag 'jquery' -%>
-        <%= javascript_include_tag 'jquery-ui' -%>
-        <%= javascript_include_tag 'jrails' -%>
-        <%= javascript_include_tag 'jquery.contextmenu.js' -%>
-        <%= javascript_include_tag 'jquery.tablesorter.js' -%>
-        <%= javascript_include_tag 'jquery.tablednd.js' -%>
-        <%= javascript_include_tag 'index.js' -%>
+        <%= stylesheet_link_tag "styles" %>
+        <%= javascript_include_tag 'jquery' %>
+        <%= javascript_include_tag 'jquery-ui' %>
+        <%= javascript_include_tag 'jrails' %>
+        <%= javascript_include_tag 'jquery.contextmenu.js' %>
+        <%= javascript_include_tag 'jquery.tablesorter.js' %>
+        <%= javascript_include_tag 'jquery.tablednd.js' %>
+        <%= javascript_include_tag 'jquery.flydom.js' %>
+        <%= javascript_include_tag 'index.js' %>
+        <%= javascript_include_tag 'poller.js' %>
     </head>
     <body>
         <div id="header">
@@ -21,7 +23,7 @@
                 <img id="add-button" src="images/add.png" />
                 <input id="add-input" type="text" size="40" />
             </div>
-            <h1>3 downloading, 4 seeding</h1>
+            <h1 id="status"></h1>
         </div>
         <div id="main">
             <div class="contextMenu" id="torrentContext">
@@ -49,26 +51,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <%- for torrent in @torrents -%>
-                    <tr class="menu" hash="<%= torrent[:hash] -%>" state="<%= torrent[:state] -%>">
-                        <td><img src="images/icons/<%= get_mime_icon torrent[:name] -%>.png" /></td>
-                        <td><a href="info/<%= torrent[:hash] -%>"><%=h torrent[:name] -%></a></td>
-                        <td>
-                            <div class="prog-border">
-                                <div class="prog-bar" style="width: <%= torrent[:percentage] -%>%;">
-                                    <div style="font: 7pt Tahoma, sans-serif; text-align: right;"><%= torrent[:percentage] -%>%</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td><%=h number_to_human_size(torrent[:size]) -%></td>
-                        <td><%=h number_to_human_size(torrent[:down_rate]) -%></td>
-                        <td><%=h number_to_human_size(torrent[:downloaded]) -%></td>
-                        <td><%=h number_to_human_size(torrent[:uploaded]) -%></td>
-                        <td><%=h number_to_human_size(torrent[:down_rate]) -%></td>
-                        <td><%=h number_to_human_size(torrent[:up_rate]) -%></td>
-                        <td title="<%= torrent[:ratio]%>"><img src="images/icons/<%= get_ratio_icon(torrent[:ratio]) -%>.png"/></td>
-                    </tr>
-                    <%- end -%>
                 </tbody>
             </table>
         </div>

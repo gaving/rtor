@@ -1,12 +1,12 @@
 # config/config.yml
 development:
-  rtorret_scgi: http://SOKAR/RPC2
+  rtorret_scgi: http://192.168.1.100/RPC2
   download_directory: /Volumes/incoming/
 
 test:
-  rtorret_scgi: http://SOKAR/RPC2
+  rtorret_scgi: http://192.168.1.100/RPC2
   download_directory: /Volumes/incoming/
 
 production:
-  rtorret_scgi: http://SOKAR/RPC2
+  rtorret_scgi: http://192.168.1.100/RPC2
   download_directory: /Volumes/incoming/

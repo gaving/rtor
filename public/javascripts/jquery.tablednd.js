@@ -127,14 +127,12 @@ jQuery.tableDnD = {
 			cells.each(function() {
 				// The cell is bound to "this"
                 jQuery(this).mousedown(function(ev) {
-                    if ( ev.button == 1 && ev.target.tagName == "TD" ) {
                     jQuery.tableDnD.dragObject = this.parentNode;
                     jQuery.tableDnD.currentTable = table;
                     jQuery.tableDnD.mouseOffset = jQuery.tableDnD.getMouseOffset(this, ev);
                     if (config.onDragStart) {
                         // Call the onDrop method if there is one
                         config.onDragStart(table, this);
-                    }
                     }
                     return false;
                 });
