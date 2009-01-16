@@ -1,17 +1,11 @@
 $(document).ready(function() {
 
-    $("#torrentsTable").tablesorter();
-    $("#torrentsTable").tableDnD();
-
-    $("tr:odd").css("background-color", "#F4F4F8");
-    $("tr:even").css("background-color", "#EFF1F1");
-
     $("#header").mouseover(function () {
-        $("#button-bar").toggle();
+        $("#button-bar").show();
     });
 
     $("#header").mouseout(function () {
-        $("#button-bar").toggle();
+        $("#button-bar").hide();
     });
 
     $('#add-button').click(function() {
@@ -43,6 +37,12 @@ $(document).ready(function() {
             label += data.completed + " completed";
         }
         $('div #status').html(label);
+    });
+
+    $.getJSON('/torrent/feed/', function(data) {
+        $.each(data, function(index,item) {
+            $('<li>' + item.title + '</li>').appendTo($('#feed'));
+        });
     });
 
 });

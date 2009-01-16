@@ -4,8 +4,7 @@
     <head>
         <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
         <title>rtorrent on rails</title>
-        <link rel="shortcut icon" href="favicon.ico" />
-        <link rel="icon" href="favicon.ico" />
+        <link rel="icon" type="image/png" href="favicon.png">
         <%= stylesheet_link_tag "styles" %>
         <%= javascript_include_tag 'jquery' %>
         <%= javascript_include_tag 'jquery-ui' %>
@@ -41,9 +40,9 @@
                         <th>filename</th>
                         <th>progress</th>
                         <th>size</th>
-                        <th>remaining</th>
-                        <th>downloaded</th>
-                        <th>uploaded</th>
+                        <th>left</th>
+                        <!--<th>downloaded</th>-->
+                        <!--<th>uploaded</th>-->
                         <th>down</th>
                         <th>up</th>
                         <th>ratio</th>
@@ -68,9 +67,7 @@
             <div class="column" style="width: 50%" id='feed'>
                 <div class="section">
                     <h3>RSS FEED</h3>
-                        <%- for entry in @feed -%>
-                            <li style="list-style-image: url(static/images/icons/<%= entry[:name] -%>)"><a href="/download/<%= entry[:name] -%>"><%= entry[:name] -%></a></li>
-                        <%- end -%>
+                    <ul id="feed">
                     </ul>
                 </div>
             </div>

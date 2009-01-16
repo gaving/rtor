@@ -1,3 +1,13 @@
+h1. Rtorrent on rails TODO list
 
-[_] Drag and drop torrents on to main div to download
+Bunch of TODO items
+
+h2. List
+
+[_] Drag and drop torrents on to main div to download (impossible?)
 [_] Heartbeat and Timeout stuff for abandoning the constant refreshes
+[_] Delete icons properly when they are binned
+[_] Get the torrents feed working
+[_] Make the download box actually do something
+[_] View torrent information
+[_] View torrent information

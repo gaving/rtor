@@ -1,4 +1,6 @@
 require 'xmlrpc/client'
+require 'rubygems'
+require 'feed-normalizer'
 
 class TorrentController < ApplicationController
 
@@ -63,5 +65,21 @@ class TorrentController < ApplicationController
         render :text => Hash[ 'stopped' => call_wrapper("d.stop", @t) ].to_json
     end
 
+    def feed
+
+        feed_url = 'http://rss.slashdot.org/Slashdot/slashdot'
+        rss = FeedNormalizer::FeedNormalizer.parse open(feed_url)
+
+        exit unless rss.entries.length > 0
+
+        rss.entries.each do |entry|
+            title = entry.title
+            body = entry.content
+            authors = entry.authors.join(', ') rescue ''
+            entry_url = entry.urls.first
+        end
+
+        render :text => rss.entries[0,8].to_json
+    end
 
 end
