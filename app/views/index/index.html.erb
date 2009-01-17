@@ -54,20 +54,17 @@
             </table>
         </div>
         <div id="footer">
-            <div class="column">
+            <div class="column" style="width: 30%">
                 <div class="section">
-                    <h3>FOLDERS</h3>
-                    <ul>
-                        <%- for folder in @folders -%>
-                            <li style="list-style-image: url(images/icons/folder.png)"> <a href=""><%= folder -%></a></li>
-                        <%- end -%>
+                    <h3>FEED</h3>
+                    <ul id="feed">
                     </ul>
                 </div>
             </div>
-            <div class="column" style="width: 50%" id='feed'>
+            <div class="column" style="width: 50%">
                 <div class="section">
-                    <h3>RSS FEED</h3>
-                    <ul id="feed">
+                    <h3>INCOMING</h3>
+                    <ul id="incoming">
                     </ul>
                 </div>
             </div>

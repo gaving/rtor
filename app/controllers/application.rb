@@ -1,5 +1,6 @@
 # Filters added to this controller apply to all controllers in the application.
 # Likewise, all the methods added will be available for all controllers.
+require 'ruby-growl'
 
 class ApplicationController < ActionController::Base
     helper :all # include all helpers, all the time
@@ -41,8 +42,17 @@ class ApplicationController < ActionController::Base
         return resp
     end
 
+    def do_growl(subject, body)
+        g = Growl.new "localhost", "rtor", ["rtor Notification"]
+        g.notify "rtor Notification", subject, body
+    end
+
     def get_file_list()
-        return Dir.new(APP_CONFIG['download_directory']).entries.sort.reject {|f| [".", ".."].include? f}[0,5]
+        begin
+            return Dir.new(APP_CONFIG['download_directory']).entries.sort.reject {|f| [".", ".."].include? f}[0,5]
+        rescue Errno::ENOENT
+            return []
+        end
     end
 
     def file_type(file_name)

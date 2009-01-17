@@ -1,6 +1,4 @@
 require 'xmlrpc/client'
-require 'rubygems'
-require 'feed-normalizer'
 
 class TorrentController < ApplicationController
 
@@ -22,7 +20,6 @@ class TorrentController < ApplicationController
             torrent[:remaining] = torrent[:size] - torrent[:downloaded]
             torrent[:percentage] = sprintf("%.2f", (Float(torrent[:downloaded]) / Float(torrent[:size]) * 100))
             torrent[:ratio] = sprintf("%.2f", Float(torrent[:uploaded]) / Float(torrent[:size]))
-
             torrent[:size] = help.number_to_human_size(torrent[:size])
             torrent[:uploaded] = help.number_to_human_size(torrent[:uploaded])
             torrent[:remaining] = help.number_to_human_size(torrent[:remaining])
@@ -52,34 +49,20 @@ class TorrentController < ApplicationController
 
     def erase
         @t = params[:id]
+        do_growl("rtor", sprintf("%s has been deleted!", @t))
         render :text => Hash[ 'erased' => call_wrapper("d.erase", @t) ].to_json
     end
 
     def start
         @t = params[:id]
+        do_growl("rtor", sprintf("%s has now been started!", @t))
         render :text => Hash[ 'started' => call_wrapper("d.start", @t) ].to_json
     end
 
     def stop
         @t = params[:id]
+        do_growl("rtor", sprintf("%s is now stopped!", @t))
         render :text => Hash[ 'stopped' => call_wrapper("d.stop", @t) ].to_json
-    end
-
-    def feed
-
-        feed_url = 'http://rss.slashdot.org/Slashdot/slashdot'
-        rss = FeedNormalizer::FeedNormalizer.parse open(feed_url)
-
-        exit unless rss.entries.length > 0
-
-        rss.entries.each do |entry|
-            title = entry.title
-            body = entry.content
-            authors = entry.authors.join(', ') rescue ''
-            entry_url = entry.urls.first
-        end
-
-        render :text => rss.entries[0,8].to_json
     end
 
 end

@@ -39,10 +39,25 @@ $(document).ready(function() {
         $('div #status').html(label);
     });
 
-    $.getJSON('/torrent/feed/', function(data) {
+    $.getJSON('/feed/entries/', function(data) {
         $.each(data, function(index,item) {
-            $('<li>' + item.title + '</li>').appendTo($('#feed'));
+            $('#feed').tplAppend(item, function() {
+                return [
+                    'li', { style: 'list-style-image: url(images/icons/mime-text.png)', id: "tim" }, item.title
+                ];
+            });
         });
     });
+
+    $.getJSON('/index/files/', function(data) {
+        $.each(data, function(index,item) {
+            $('#incoming').tplAppend(item, function() {
+                return [
+                    'li', { style: 'list-style-image: url(images/icons/folder.png)', id: "tim" }, item
+                ];
+            });
+        });
+    });
+
 
 });
