@@ -23,11 +23,11 @@ tr td { text-align: left; padding: 5px 3px; margin: 0px; font-size: 8pt; }
 #main { background:#f6f6f6; font-size: x-small; text-align: center; display: none; }
 #main a { color: #000 }
 
-#add-input {
+#addInput {
     margin-top: 10px;
     display:none; 
 }
-#button-bar {
+#buttonBar {
     display:none; 
 }
 

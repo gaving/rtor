@@ -1,4 +1,5 @@
 require 'xmlrpc/client'
+require 'cgi'
 
 class TorrentController < ApplicationController
 
@@ -47,21 +48,28 @@ class TorrentController < ApplicationController
         render :text => { :completed => completed.size, :downloading => downloading.size }.to_json
     end
 
+    def add
+        @t = params[:torrent]
+        @t << '&sessu=' + CGI.escape(APP_CONFIG['cookie'])
+        do_growl(sprintf("%s has been added!", @t))
+        render :text => Hash[ 'added' => call_wrapper("load_start", @t) ].to_json
+    end
+
     def erase
         @t = params[:id]
-        do_growl("rtor", sprintf("%s has been deleted!", @t))
+        do_growl(sprintf("%s has been deleted!", @t))
         render :text => Hash[ 'erased' => call_wrapper("d.erase", @t) ].to_json
     end
 
     def start
         @t = params[:id]
-        do_growl("rtor", sprintf("%s has now been started!", @t))
+        do_growl(sprintf("%s has now been started!", @t))
         render :text => Hash[ 'started' => call_wrapper("d.start", @t) ].to_json
     end
 
     def stop
         @t = params[:id]
-        do_growl("rtor", sprintf("%s is now stopped!", @t))
+        do_growl(sprintf("%s is now stopped!", @t))
         render :text => Hash[ 'stopped' => call_wrapper("d.stop", @t) ].to_json
     end
 

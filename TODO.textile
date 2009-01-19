@@ -17,3 +17,4 @@ h2. 0.1
 [_] Interface it with Growl for torrent events
 [_] Draggable panels at the bottom
 [_] Configuration etc :/
+[_] Make separate views for the seeding and the downloading

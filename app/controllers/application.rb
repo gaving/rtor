@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
     # See ActionController::RequestForgeryProtection for details
     # Uncomment the :secret if you're not using the cookie session store
-    protect_from_forgery # :secret => '63cd8a0aa66002c59918243e0661a9e7'
+    #protect_from_forgery # :secret => '63cd8a0aa66002c59918243e0661a9e7'
 
     # See ActionController::Base for details 
     # Uncomment this to filter the contents of submitted sensitive data parameters
@@ -34,15 +34,15 @@ class ApplicationController < ActionController::Base
     def call_wrapper(cmd, hash)
         begin
             server_call(cmd, hash)
-            resp = 1
+            resp = true
         rescue XMLRPC::FaultException
-            resp = 0
+            resp = false
         end
 
         return resp
     end
 
-    def do_growl(subject, body)
+    def do_growl (body, subject = "rtor")
         g = Growl.new "localhost", "rtor", ["rtor Notification"]
         g.notify "rtor Notification", subject, body
     end
@@ -63,11 +63,11 @@ class ApplicationController < ActionController::Base
         case file_type(file)
         when 'avi', 'mkv'
             return 'mime-video'
-        when 'jpg'
+        when 'jpg', 'gif', 'jpeg'
             return 'mime-image'
-        when 'mp3'
+        when 'mp3', 'wav', 'ogg'
             return 'mime-audio'
-        when 'rar'
+        when 'rar', 'zip', 'gz', 'tar'
             return 'mime-archive'
         when 'txt'
             return 'mime-text'

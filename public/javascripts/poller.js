@@ -110,7 +110,7 @@ $(document).ready(function() {
                         'td',, this.remaining,
                         'td',, this.down_rate,
                         'td',, this.up_rate,
-                        'td',, [ 'img', { src: "images/icons/" + this.ratio_img + ".png" } ]
+                        'td', { style: { 'text-align': 'center' } }, [ 'img', { src: "images/icons/" + this.ratio_img + ".png" } ]
                 ]
             ];
         });

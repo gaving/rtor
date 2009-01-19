@@ -18,9 +18,11 @@
     </head>
     <body>
         <div id="header">
-            <div id="button-bar" style="float: right">
-                <img id="add-button" src="images/add.png" />
-                <input id="add-input" type="text" size="40" />
+            <div id="buttonBar" style="float: right">
+                <img id="addButton" src="images/add.png" />
+                <form id="addForm" method="POST" action="/torrent/add">
+                    <input id="addInput" name="torrent" type="text" size="40" />
+                </form>
             </div>
             <h1 id="status"></h1>
         </div>
@@ -41,8 +43,6 @@
                         <th>progress</th>
                         <th>size</th>
                         <th>left</th>
-                        <!--<th>downloaded</th>-->
-                        <!--<th>uploaded</th>-->
                         <th>down</th>
                         <th>up</th>
                         <th>ratio</th>

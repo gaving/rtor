@@ -5,18 +5,23 @@ class FeedController < ApplicationController
 
     def entries
 
-        feed_url = 'http://rss.slashdot.org/Slashdot/slashdot'
-        rss = FeedNormalizer::FeedNormalizer.parse open(feed_url)
+        feed_url = APP_CONFIG['feed']
 
-        exit unless rss.entries.length > 0
+        begin
+            rss = FeedNormalizer::FeedNormalizer.parse open(feed_url)
+            exit unless rss.entries.length > 0
 
-        rss.entries.each do |entry|
-            title = entry.title
-            body = entry.content
-            authors = entry.authors.join(', ') rescue ''
-            entry_url = entry.urls.first
+            @feeds = Array.new
+            rss.entries.each do |entry|
+                feed = Hash.new
+                feed[:title] = entry.title.match(/File: (.*) Thread: (.*)/)[1]
+                feed[:link] = entry.urls.first
+                @feeds << feed
+            end
+            render :text => @feeds[0,5].to_json
+        rescue OpenURI::HTTPError
+            render :text => []
         end
 
-        render :text => rss.entries[0,5].to_json
     end
 end

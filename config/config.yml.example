@@ -1,11 +1,14 @@
 development:
   rtorret_scgi: http://192.168.1.100/RPC2
   download_directory: /Volumes/incoming/
+  feed = http://rss.slashdot.org/Slashdot/slashdot
 
 test:
   rtorret_scgi: http://192.168.1.100/RPC2
   download_directory: /Volumes/incoming/
+  feed = http://rss.slashdot.org/Slashdot/slashdot
 
 production:
   rtorret_scgi: http://192.168.1.100/RPC2
   download_directory: /Volumes/incoming/
+  feed = http://rss.slashdot.org/Slashdot/slashdot
