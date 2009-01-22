@@ -114,11 +114,7 @@ $(document).ready(function() {
                 ]
             ];
         });
-
-                        //'td',, this.downloaded,
-                        //'td',, this.uploaded,
     }
-
 
     function processData(item) {
 
@@ -133,13 +129,9 @@ $(document).ready(function() {
             item.up_rate,
             "<img src='images/icons/" + item.ratio_img + ".png'",
         ];
-            //item.downloaded,
-            //item.uploaded,
 
         /* Find the row for the current item (if there is one) */
         var row = $("#" + item.hash);
-        //console.log($(row).attr('id'))
-        //console.log("%s: %s (%s)", item.name, item.hash, row);
 
         if ($(row).attr('id')) {
             $($(row).children('td')).each(function(index, cell) {

@@ -2,10 +2,12 @@ $(document).ready(function() {
 
     $("#header").mouseover(function () {
         $("#buttonBar").show();
+        $("#beatBar").hide();
     });
 
     $("#header").mouseout(function () {
         $("#buttonBar").hide();
+        $("#beatBar").show();
     });
 
     $('#addButton').click(function() {
@@ -18,6 +20,11 @@ $(document).ready(function() {
     });
 
     $('#main').fadeIn("slow");
+
+    $("#beatBar").heartBeat({
+        delayBetweenAnimation:9000,
+        delay:1000
+    });
 
     $.getJSON('/torrent/info/', function(data) {
         var label = "";

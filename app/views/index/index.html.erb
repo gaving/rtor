@@ -6,18 +6,22 @@
         <title>rtorrent on rails</title>
         <link rel="icon" type="image/png" href="favicon.png">
         <%= stylesheet_link_tag "styles" %>
-        <%= javascript_include_tag 'jquery' %>
-        <%= javascript_include_tag 'jquery-ui' %>
-        <%= javascript_include_tag 'jrails' %>
-        <%= javascript_include_tag 'jquery.contextmenu.js' %>
-        <%= javascript_include_tag 'jquery.tablesorter.js' %>
-        <%= javascript_include_tag 'jquery.tablednd.js' %>
-        <%= javascript_include_tag 'jquery.flydom.js' %>
-        <%= javascript_include_tag 'index.js' %>
-        <%= javascript_include_tag 'poller.js' %>
+        <%= javascript_include_tag 'jquery/jquery' %>
+        <%= javascript_include_tag 'jquery/jquery-ui' %>
+        <%= javascript_include_tag 'jquery/jrails' %>
+        <%= javascript_include_tag 'jquery/jquery.contextmenu' %>
+        <%= javascript_include_tag 'jquery/jquery.tablesorter' %>
+        <%= javascript_include_tag 'jquery/jquery.tablednd' %>
+        <%= javascript_include_tag 'jquery/jquery.flydom' %>
+        <%= javascript_include_tag 'jquery/jquery.heartbeat' %>
+        <%= javascript_include_tag 'index' %>
+        <%= javascript_include_tag 'poller' %>
     </head>
     <body>
         <div id="header">
+            <div id="beatBar" style="float: right">
+                <img id="heart" src="images/heart.png" />
+            </div>
             <div id="buttonBar" style="float: right">
                 <img id="addButton" src="images/add.png" />
                 <form id="addForm" method="POST" action="/torrent/add">
