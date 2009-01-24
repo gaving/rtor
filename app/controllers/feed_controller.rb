@@ -18,7 +18,7 @@ class FeedController < ApplicationController
                 feed[:link] = entry.urls.first
                 @feeds << feed
             end
-            render :text => @feeds[0,5].to_json
+            render :text => @feeds[0,APP_CONFIG['max_rss_entries']].to_json
         rescue OpenURI::HTTPError
             render :text => []
         end

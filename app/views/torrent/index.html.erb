@@ -1,0 +1,6 @@
+<% for torrent in @torrents %>
+    <h1><%= torrent.name %>(<%= torrent.size %>)</h1>
+    <p><%= torrent.hash %></p>
+    <p><%= torrent.base_path %></p>
+    <br />
+<% end %>

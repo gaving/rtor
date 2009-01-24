@@ -2,17 +2,18 @@ h1. Rtorrent on rails TODO list
 
 h2. 0.2+
 
-...
+* [_] View torrent information
+* [_] Draggable panels at the bottom
+* [_] Make separate views for the seeding and the downloading
 
 h2. 0.1
 
-* [_] Drag and drop torrents on to main div to download (impossible?)
-* [_] Heartbeat and timeout stuff for abandoning the constant refreshes
-* [_] Delete icons properly when they are binned
+* [/] Drag and drop torrents on to main div to download (impossible?)
+* [x] Heartbeat and timeout stuff for abandoning the constant refreshes
 * [x] Get the torrents feed working
-* [_] Make the download box actually do something
-* [_] View torrent information
-* [_] Interface it with Growl for torrent events
-* [_] Draggable panels at the bottom
-* [_] Configuration etc :/
-* [_] Make separate views for the seeding and the downloading
+* [x] Make the download box actually do something
+* [x] Interface it with Growl for torrent events
+* [_] Configuration, both at the backend and frontend
+* [_] Fix the sorting. Move back to sorttable.js?
+* [_] Context sensitive menu items
+* [_] Make open action work
