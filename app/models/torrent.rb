@@ -16,6 +16,7 @@ class Torrent
     attr_reader :downloaded
     attr_reader :size
     attr_reader :state
+    attr_reader :complete
     attr_reader :down_rate
     attr_reader :up_rate
     attr_reader :remaining
@@ -45,11 +46,11 @@ class Torrent
     end
 
     def self.completed
-        all.select{ |torrent| torrent.state == 1 }
+        all.select{ |torrent| torrent.complete == 1 }
     end
 
     def self.downloading
-        all.select{ |torrent| torrent.state == 0 }
+        all.select{ |torrent| torrent.complete == 0 }
     end
 
     def initialize(hash)
@@ -60,6 +61,7 @@ class Torrent
         @downloaded = server_call("d.get_bytes_done", hash)
         @size = server_call("d.get_size_bytes", hash)
         @state = server_call("d.get_state", hash)
+        @complete = server_call("d.get_complete", hash)
         @down_rate = server_call("d.get_down_rate", hash)
         @up_rate = server_call("d.get_up_rate", hash)
         @remaining = @size - @downloaded

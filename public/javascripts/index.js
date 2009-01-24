@@ -37,28 +37,28 @@ $(document).ready(function() {
         $('div #status').html(label);
     });
 
-    $.getJSON('/feed/entries/', function(data) {
-        $.each(data, function(index, item) {
-            $('#feed').tplAppend(item, function() {
-                return [
-                    'li', { style: 'list-style-image: url(images/icons/mime-text.png)', id: "tim" }, [
-                        'a', { href: item.link }, item.title
-                    ]
-                ];
-            });
-        });
+    //$.getJSON('/feed/entries/', function(data) {
+        //$.each(data, function(index, item) {
+            //$('#feed').tplAppend(item, function() {
+                //return [
+                    //'li', { style: 'list-style-image: url(images/icons/mime-text.png)', id: "tim" }, [
+                        //'a', { href: item.link }, item.title
+                    //]
+                //];
+            //});
+        //});
 
-        $('#feed a').click(function() {
-            var link = $(this);
-            $.getJSON('/torrent/add' , { torrent : $(this).attr('href') }, function(data) {
-                if (!data.added) {
-                    alert('Couldn\'t grab the torrent!');
-                }
-            });
+        //$('#feed a').click(function() {
+            //var link = $(this);
+            //$.getJSON('/torrent/add' , { torrent : $(this).attr('href') }, function(data) {
+                //if (!data.added) {
+                    //alert('Couldn\'t grab the torrent!');
+                //}
+            //});
 
-            return false;
-        });
-    });
+            //return false;
+        //});
+    //});
 
     $.getJSON('/index/files/', function(data) {
         $.each(data, function(index, item) {

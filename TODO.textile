@@ -17,3 +17,4 @@ h2. 0.1
 * [_] Fix the sorting. Move back to sorttable.js?
 * [_] Context sensitive menu items
 * [_] Make open action work
+* [_] Growl on torrent completed, send email, txt, tweet?

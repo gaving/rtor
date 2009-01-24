@@ -11,9 +11,9 @@ class FeedController < ApplicationController
             rss = FeedNormalizer::FeedNormalizer.parse open(feed_url)
             exit unless rss.entries.length > 0
 
-            @feeds = Array.new
+            @feeds = []
             rss.entries.each do |entry|
-                feed = Hash.new
+                feed = {}
                 feed[:title] = entry.title.match(/File: (.*) Thread: (.*)/)[1]
                 feed[:link] = entry.urls.first
                 @feeds << feed
