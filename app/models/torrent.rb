@@ -37,7 +37,7 @@ class Torrent
     end
 
     def self.all
-        completed = server_call("download_list")
+        completed = server_call("download_list", "main")
         completed.map { |t| new(t) }
     end
 
