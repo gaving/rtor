@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
     end
 
     def do_growl (body, subject = "rtor")
-        g = Growl.new "localhost", "rtor", ["rtor Notification"]
+        g = Growl.new APP_CONFIG['growl_host'], "rtor", ["rtor Notification"]
         g.notify "rtor Notification", subject, body
     end
 

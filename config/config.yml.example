@@ -1,5 +1,6 @@
 development:
   rtorret_scgi: http://192.168.1.100/RPC2
+  growl_host: 192.168.1.102
   download_directory: /Volumes/incoming/
   feed: = http://rss.slashdot.org/Slashdot/slashdot
   max_downloads: 4
@@ -7,6 +8,7 @@ development:
 
 test:
   rtorret_scgi: http://192.168.1.100/RPC2
+  growl_host: 192.168.1.102
   download_directory: /Volumes/incoming/
   feed: = http://rss.slashdot.org/Slashdot/slashdot
   max_downloads: 4
@@ -14,6 +16,7 @@ test:
 
 production:
   rtorret_scgi: http://192.168.1.100/RPC2
+  growl_host: 192.168.1.102
   download_directory: /Volumes/incoming/
   feed: = http://rss.slashdot.org/Slashdot/slashdot
   max_downloads: 4
