@@ -18,3 +18,4 @@ h2. 0.1
 * [_] Context sensitive menu items
 * [_] Make open action work
 * [_] Growl on torrent completed, send email, txt, tweet?
+* [_] Update the header on an operation

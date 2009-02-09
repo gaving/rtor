@@ -32,10 +32,9 @@ class TorrentController < ApplicationController
     end
 
     def open
-        render :text => session[:tim]
-        #t = Torrent.find(params[:id])
-        #path = File.join(APP_CONFIG['download_directory'], t.name)
-        #send_file(path)
+        t = Torrent.find(params[:id])
+        path = File.join(APP_CONFIG['download_directory'], t.name)
+        send_file(path)
     end
 
     def start
