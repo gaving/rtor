@@ -5,7 +5,7 @@ $(document).ready(function() {
             var $this = $(this);
             var opts = $.extend({}, $.fn.poll.defaults, options);
             setInterval(update, opts.interval);
-            function update(){
+            function update() {
                 $.ajax({
                     type: opts.type,
                     url: opts.url,
@@ -26,7 +26,9 @@ $(document).ready(function() {
         $('tr.menu').contextMenu('torrentContext', {
             bindings: {
                 'open': function(t) {
-                    alert('Trigger was '+t.id+'\nAction was Open');
+                    $.getJSON('/torrent/open/' + $(t).attr('id'), function(data) {
+                        alert(data['path']);
+                    });
                 },
                 'start': function(t) {
                     var item = $(t);
@@ -75,8 +77,8 @@ $(document).ready(function() {
         $("#torrentsTable").tableDnD();
 
         /* Colour the table rows */
-        $("tr:odd").css("background-color", "#F4F4F8");
-        $("tr:even").css("background-color", "#EFF1F1");
+        $("tr:odd").addClass('odd');
+        $("tr:even").addClass('even');
 
         /* Set up the context menu for each click */
         buildMenu();

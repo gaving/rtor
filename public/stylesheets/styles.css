@@ -1,13 +1,58 @@
-html * { padding:0; margin:0; }
-body * { padding:10px 20px; }
-body * * { padding:0; }
-body { font:small 'Lucida Grande', sans-serif; background:#eee; }
-h1 { font-weight:bold; font-family: 'Lucida Grande', sans-serif; color:#ccc; margin-bottom:.4em; }
 
-table.main { margin: 1em 1em 0; width: 100%; }
-tr head { border-bottom: 1px solid #463500; }
-tr th { text-align: center; padding: 5px 3px; margin: 0px; font-size: 10pt; }
-tr td { text-align: left; padding: 5px 3px; margin: 0px; font-size: 8pt; }
+html * {
+    padding:0;
+    margin:0;
+}
+
+body * {
+    padding:10px 20px;
+}
+
+body * * {
+    padding:0;
+}
+
+body {
+    font:small 'Lucida Grande', sans-serif;
+    background:#eee;
+}
+
+h1 {
+    font-weight:bold;
+    color:#ccc;
+    margin-bottom:.4em;
+}
+
+table.main {
+     margin: 1em 1em 0;
+     width: 100%;
+}
+
+tr head {
+    border-bottom: 1px solid #463500;
+}
+
+tr th {
+    text-align: center;
+    padding: 5px 3px;
+    margin: 0px;
+    font-size: 10pt;
+}
+
+tr td {
+    text-align: left;
+    padding: 5px 3px;
+    margin: 0px;
+    font-size: 8pt;
+}
+
+tr.even {
+    background-color: #EFF1F1;
+}
+
+tr.odd {
+    background-color: #F4F4F8;
+}
 
 .active {
     background: #F4F4F8;
@@ -20,8 +65,17 @@ tr td { text-align: left; padding: 5px 3px; margin: 0px; font-size: 8pt; }
 #header {
     background: black url(/images/footer-bg.png) repeat-x left top;
 }
-#main { background:#f6f6f6; font-size: x-small; text-align: center; display: none; }
-#main a { color: #000 }
+
+#main {
+    background:#f6f6f6;
+    font-size: x-small;
+    text-align: center;
+    display: none;
+}
+
+#main a {
+     color: #000;
+}
 
 #addInput {
     margin-top: 10px;
@@ -31,9 +85,24 @@ tr td { text-align: left; padding: 5px 3px; margin: 0px; font-size: 8pt; }
     display:none; 
 }
 
-.prog-border { width: 100px; height: 20px; background: #FFF; padding: 3px; border: 1px solid #DDD; }
-.prog-bar { height: 20px; background: url(/images/progress_blue.gif) repeat-x; }
-.prog-text { font-family: 'Lucida Grande'; font-size: 7pt; text-align: right }
+.prog-border {
+    width: 100px;
+    height: 20px;
+    background: #FFF;
+    padding: 3px;
+    border: 1px solid #DDD;
+ }
+
+.prog-bar {
+     height: 20px;
+     background: url(/images/progress_blue.gif) repeat-x;
+ }
+
+.prog-text {
+     font-family: 'Lucida Grande';
+     font-size: 7pt;
+     text-align: right;
+ }
 
 #footer {
     background: black url(/images/footer-bg.png) repeat-x left top;
@@ -84,6 +153,15 @@ tr td { text-align: left; padding: 5px 3px; margin: 0px; font-size: 8pt; }
     margin-left: 0;
     padding-left: 0;
 }
+
 #footer .section li {
     margin-left: 40px;
+}
+
+#footer li.text {
+    list-style-image: url(/images/icons/mime-text.png);
+}
+
+#footer li.folder {
+    list-style-image: url(/images/icons/folder.png);
 }

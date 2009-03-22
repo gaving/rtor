@@ -33,8 +33,8 @@ class TorrentController < ApplicationController
 
     def open
         t = Torrent.find(params[:id])
-        path = File.join(APP_CONFIG['download_directory'], t.name)
-        send_file(path)
+        path = File.join(APP_CONFIG['access_directory'], CGI.escape(t.name))
+        render :text => { 'path' => path }.to_json
     end
 
     def start

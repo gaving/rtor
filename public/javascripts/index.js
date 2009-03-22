@@ -16,7 +16,7 @@ $(document).ready(function() {
     });
 
     $('#addForm').submit(function() {
-        alert("Are you a tim rogers too?");
+        alert("TODO: Actually add the torrent");
     });
 
     $('#main').fadeIn("slow");
@@ -41,7 +41,7 @@ $(document).ready(function() {
         $.each(data, function(index, item) {
             $('#feed').tplAppend(item, function() {
                 return [
-                    'li', { style: 'list-style-image: url(images/icons/mime-text.png)', id: "tim" }, [
+                    'li', { className: 'text' }, [
                         'a', { href: item.link }, item.title
                     ]
                 ];
@@ -64,7 +64,7 @@ $(document).ready(function() {
         $.each(data, function(index, item) {
             $('#incoming').tplAppend(item, function() {
                 return [
-                    'li', { style: 'list-style-image: url(images/icons/folder.png)', id: "tim" }, [
+                    'li', { className: 'folder' }, [
                         'a', { href: item }, item
                     ]
                 ];
