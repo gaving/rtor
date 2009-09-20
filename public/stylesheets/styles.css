@@ -71,13 +71,11 @@ tr.odd {
     width: 40%;
     height: 100px;
     position: fixed;
-    top: 30%;
-    left: 30%;
-    background:url(/images/spinner.gif) no-repeat center #fff;
+    top: 35%;
+    left: 25%;
     text-align:center;
     padding:10px;
     font:normal 16px Tahoma, Geneva, sans-serif;
-    border:1px solid #666;
     overflow: auto;
 }
 
