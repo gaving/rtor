@@ -15,6 +15,7 @@
     margin-top: 10px;
     display:none; 
 }
+
 #buttonBar {
     display:none; 
     float: right;
@@ -32,14 +33,13 @@
     border: 1px solid #DDD;
  }
 
- .prog-bar {
-     height: 20px;
-     background: url(/images/progress_blue.gif) repeat-x;
- }
+.prog-bar {
+    height: 20px;
+    background: url(/images/progress_blue.gif) repeat-x;
+}
 
- .prog-text {
-     font-family: 'Lucida Grande';
-     font-size: 7pt;
-     text-align: right;
- }
-
+.prog-text {
+    font-family: 'Lucida Grande';
+    font-size: 7pt;
+    text-align: right;
+}

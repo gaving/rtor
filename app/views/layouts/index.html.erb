@@ -17,6 +17,7 @@
             <%= yield :header %>
         </div>
         <div id="main">
+            <div class="notice"><%= flash[:notice] %></div>
             <%= yield :main %>
         </div>
         <div id="footer">

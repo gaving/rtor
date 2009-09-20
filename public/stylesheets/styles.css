@@ -145,3 +145,14 @@ tr.odd {
 #footer li.folder {
     list-style-image: url(/images/icons/folder.png);
 }
+
+.notice {
+    display: none;
+    background: cornsilk;
+    padding: 10px;
+    width: 50%;
+    margin-left: 25%;
+    border: 1px solid black;
+    font-weight: bold;
+    margin-bottom: 20px;
+}

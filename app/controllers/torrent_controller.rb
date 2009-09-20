@@ -44,7 +44,7 @@ class TorrentController < ApplicationController
 
     def stop
         t = Torrent.find(params[:id])
-        #do_growl("has been stopped!", t.name)
+        # do_growl("has been stopped!", t.name)
         render :text => { 'stopped' => call_wrapper("d.stop", t.hash) }.to_json
     end
 

@@ -94,10 +94,11 @@
                     var item = $(t);
                     $.getJSON('/torrent/start/' + $(t).attr('id'), function(data) {
                         if (data.started) {
+                            flash("Torrent started");
                             $(item).removeClass("stopped");
                             $(item).addClass("active");
                         } else {
-                            alert('Error: Couldn\'t start!');
+                            flash('Error: Couldn\'t start!');
                         }
                     });
                 },
@@ -105,10 +106,11 @@
                     var item = $(t);
                     $.getJSON('/torrent/stop/' + $(t).attr('id'), function(data) {
                         if (data.stopped) {
+                            flash("Torrent stopped");
                             $(item).removeClass("active");
                             $(item).addClass("stopped");
                         } else {
-                            alert('Error: Couldn\'t stop!');
+                            flash('Error: Couldn\'t stop!');
                         }
                     });
                 },
@@ -117,6 +119,7 @@
                         var item = $(t);
                         $.getJSON('/torrent/erase/' + $(t).attr('id'), function(data) {
                             if (data.erased) {
+                                flash("Torrent deleted");
                                 $(item).fadeOut("slow");
                             } else {
                                 alert('Error: Couldn\'t delete!');
