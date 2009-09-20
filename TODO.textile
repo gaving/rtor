@@ -5,6 +5,7 @@ h2. 0.2+
 * [_] View torrent information
 * [_] Draggable panels at the bottom
 * [_] Make separate views for the seeding and the downloading
+* [_] Prowl would be good. Though, I'm thinking a standalone app might be better for the notification stuff.
 
 h2. 0.1
 
