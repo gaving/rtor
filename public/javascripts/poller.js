@@ -1,19 +1,28 @@
 
     function __pollInit() {
 
+        polling = true;
+
         (function($) {
             $.fn.poll = function(options) {
                 var $this = $(this);
                 var opts = $.extend({}, $.fn.poll.defaults, options);
-                setInterval(update, opts.interval);
+                var interval = setInterval(update, opts.interval);
                 function update() {
-                    $.ajax({
-                        type: opts.type,
-                        dataType: opts.dataType,
-                        cache: opts.cache,
-                        url: opts.url,
-                        success: opts.success
-                    });
+
+                    if (polling) {
+                        $.ajax({
+                            type: opts.type,
+                            dataType: opts.dataType,
+                            cache: opts.cache,
+                            url: opts.url,
+                            success: opts.success
+                        });
+                    } else {
+
+                        /* Not polling anymore, nuke this timer */
+                        clearInterval(interval);
+                    }
                 }
             };
 
@@ -26,6 +35,13 @@
                 interval: 2000
             };
         })(jQuery);
+
+        __initPoller();
+
+        __loadTable();
+    }
+
+    function __initPoller() {
 
         $("#torrentsTable").poll({
             url: "/torrent/torrents/",
@@ -40,8 +56,16 @@
                 });
             }
         });
+    }
+    function __togglePoller() {
 
-        __loadTable();
+        /* Toggle the polling */
+        polling = !polling;
+        if (polling) {
+
+            /* Re-initialize the poller */
+            __initPoller();
+        }
     }
 
     function __loadTable() {
@@ -135,7 +159,7 @@
         $('#torrentsTable tbody').tplAppend(item, function() {
             return [
                 'tr', { className: 'menu' + (this.state === 0 ? ' stopped' : ''), id: this.hash }, [
-                    'td',, [ 'img', { src: "images/icons/" + this.mime_img + ".png" } ],
+                    'td',, [ 'img', { src: "/images/icons/" + this.mime_img + ".png" } ],
                         'td',, this.name,
                         'td',, [
                             'div', { className: 'prog-border' }, [
@@ -148,7 +172,7 @@
                         'td',, this.remaining,
                         'td',, this.down_rate,
                         'td',, this.up_rate,
-                        'td', { style: { 'text-align': 'center' } }, [ 'img', { src: "images/icons/" + this.ratio_img + ".png" } ]
+                        'td', { style: { 'text-align': 'center' } }, [ 'img', { src: "/images/icons/" + this.ratio_img + ".png" } ]
                 ]
             ];
         });
@@ -156,16 +180,15 @@
 
     function processData(item) {
 
-        /* Oh christ this is so gross */
         var order = [
-            "<img src='images/icons/" + item.mime_img + ".png'",
+            "<img src='/images/icons/" + item.mime_img + ".png'",
             item.name,
             "<div class='prog-border'><div class='prog-bar' style='width: " + item.percentage + "%'><div class='prog-text'>" + item.percentage + "%</div></div></div>",
             item.size,
             item.remaining,
             item.down_rate,
             item.up_rate,
-            "<img src='images/icons/" + item.ratio_img + ".png'"
+            "<img src='/images/icons/" + item.ratio_img + ".png'"
         ];
 
         /* Find the row for the current item (if there is one) */

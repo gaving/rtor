@@ -5,6 +5,7 @@
             __feedInit();
             __filesInit();
             __pollInit();
+            __hookEvents();
         });
     });
 
@@ -27,4 +28,14 @@
                 }
             }
         });
+    }
+
+    function __hookEvents() {
+        $(document).bind('keydown', 'ctrl+c', function() { __hookTogglePoller(); });
+    }
+
+    function __hookTogglePoller() {
+        if (confirm('Are you sure you wish to ' + ((!polling) ? 'resume' : 'pause') + ' updates?')) {
+            __togglePoller();
+        }
     }
