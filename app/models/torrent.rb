@@ -4,7 +4,7 @@ require 'cgi'
 APP_CONFIG = YAML.load_file("#{RAILS_ROOT}/config/config.yml")[RAILS_ENV]
 
 def server_call(*args)
-    s = XMLRPC::Client.new2(APP_CONFIG['rtorret_scgi'])
+    s = XMLRPC::Client.new2(APP_CONFIG['rtorrent_scgi'])
     s.call(*args)
 end
 
@@ -37,8 +37,13 @@ class Torrent
     end
 
     def self.all
-        completed = server_call("download_list", "main")
-        completed.map { |t| new(t) }
+        begin
+            completed = server_call("download_list", "main")
+            completed.map { |t| new(t) }
+        rescue SocketError, Errno::ECONNREFUSED => e
+            print "Error: Could not connect to server '%s' (%s)\r\n" % [APP_CONFIG['rtorrent_scgi'], e]
+            completed = {}
+        end
     end
 
     def self.find(param)

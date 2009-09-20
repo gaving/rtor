@@ -19,6 +19,10 @@ to start the internal rails web server.
 
 Now visit http://0.0.0.0:3000 and hopefully view your torrents!
 
+Check out capistrano for managing this remotely.
+
 h2. Notes
 
-Total rails newb, I'm pretty sure this entire application could be reduced to a one liner.
+Total rails newb, I'm pretty sure this entire application could be reduced to a
+one liner. Watch out for rtorrent not being able to read the socket due to a
+permissions issue.

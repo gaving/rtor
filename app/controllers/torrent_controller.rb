@@ -69,13 +69,19 @@ class TorrentController < ApplicationController
         end
     end
 
+    def status
+        render :text => "some sort of status check to make sure everything is ok"
+    end
+
     def torrents
         torrents = Torrent.all
         current_session = {}
-        torrents.each do |t|
-            t.ratio_img = get_ratio_icon(t.ratio)
-            t.mime_img = get_mime_icon(t.name)
-            current_session[t.hash] = {:complete => t.complete, :state => t.state}
+        if !torrents.empty? and !torrents.nil?
+            torrents.each do |t|
+                t.ratio_img = get_ratio_icon(t.ratio)
+                t.mime_img = get_mime_icon(t.name)
+                current_session[t.hash] = {:complete => t.complete, :state => t.state}
+            end
         end
         check_for_updates(current_session)
         session[:stored_session] = current_session

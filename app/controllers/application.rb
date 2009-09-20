@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
     end
 
     def server_call(*args)
-        s = XMLRPC::Client.new2(APP_CONFIG['rtorret_scgi'])
+        s = XMLRPC::Client.new2(APP_CONFIG['rtorrent_scgi'])
         s.call(*args)
     end
 
