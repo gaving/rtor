@@ -1,4 +1,14 @@
 
+    $(document).ready(function() {
+
+        __torrentInit(function() {
+            __feedInit();
+            __filesInit();
+            __pollInit();
+        });
+    });
+
+
     function __callTorrentController(controller, hash, success, failure) {
         $.ajax({
             type: 'GET',

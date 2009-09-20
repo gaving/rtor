@@ -1,9 +1,4 @@
 
-    $(document).ready(function() {
-
-        __feedInit();
-    });
-
     function __feedInit() {
 
         $.getJSON('/feed/entries/', function(data) {
@@ -25,5 +20,4 @@
                 return false;
             });
         });
-
     }

@@ -1,12 +1,5 @@
 
-    $(document).ready(function() {
-
-        __torrentInit();
-
-        __hookEvents();
-    });
-
-    function __torrentInit() {
+    function __torrentInit(callback) {
 
         __callTorrentController('info', {}, function(data) {
             var label = "";
@@ -17,10 +10,16 @@
                 label += data.completed + " completed";
             }
             $('div #status').html(label);
+
+            __hookTorrentEvents();
+
+            if (callback !== undefined) {
+                callback();
+            }
         });
     }
 
-    function __hookEvents() {
+    function __hookTorrentEvents() {
 
         $("#header").mouseover(function () {
             $("#buttonBar").show();

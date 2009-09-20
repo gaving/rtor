@@ -1,28 +1,64 @@
-$(document).ready(function() {
 
-    (function($) {
-        $.fn.poll = function(options) {
-            var $this = $(this);
-            var opts = $.extend({}, $.fn.poll.defaults, options);
-            setInterval(update, opts.interval);
-            function update() {
-                $.ajax({
-                    type: opts.type,
-                    url: opts.url,
-                    success: opts.success
-                });
+    function __pollInit() {
+
+        (function($) {
+            $.fn.poll = function(options) {
+                var $this = $(this);
+                var opts = $.extend({}, $.fn.poll.defaults, options);
+                setInterval(update, opts.interval);
+                function update() {
+                    $.ajax({
+                        type: opts.type,
+                        dataType: opts.dataType,
+                        cache: opts.cache,
+                        url: opts.url,
+                        success: opts.success
+                    });
+                }
             };
-        };
 
-        $.fn.poll.defaults = {
-            type: "POST",
-            url: ".",
-            success: '',
-            interval: 2000
-        };
-    })(jQuery);
+            $.fn.poll.defaults = {
+                type: "POST",
+                url: ".",
+                dataType: "html",
+                cache: false,
+                success: '',
+                interval: 2000
+            };
+        })(jQuery);
 
-    function buildMenu() {
+        $("#torrentsTable").poll({
+            url: "/torrent/torrents/",
+            interval: 5000,
+            type: "GET",
+            dataType: "json",
+            success: function(data) {
+                $.each(data, function(i,item) {
+
+                    /* Process the updated torrent information */
+                    processData(item);
+                });
+            }
+        });
+
+        __loadTable();
+    }
+
+    function __loadTable() {
+
+        /* Load up the initial table */
+        __callTorrentController('torrents', {}, function(data) {
+
+            /* Build our initial table of torrents on entry */
+            buildTable(data);
+
+            /* Display it */
+            $('#torrentsTable').fadeIn("slow");
+            $('#spinner').hide();
+        });
+    }
+
+    function __buildMenu() {
         $('tr.menu').contextMenu('torrentContext', {
             bindings: {
                 'open': function(t) {
@@ -68,7 +104,7 @@ $(document).ready(function() {
         });
     }
 
-    function attachHandlers() {
+    function __hookTableHandlers() {
 
         /* Attach the table sorter */
         $("#torrentsTable").tablesorter();
@@ -81,7 +117,7 @@ $(document).ready(function() {
         $("tr:even").addClass('even');
 
         /* Set up the context menu for each click */
-        buildMenu();
+        __buildMenu();
     }
 
     function buildTable(data) {
@@ -91,14 +127,14 @@ $(document).ready(function() {
             buildRow(item);
         });
 
-        attachHandlers();
+        __hookTableHandlers();
     }
 
     function buildRow(item) {
 
         $('#torrentsTable tbody').tplAppend(item, function() {
             return [
-                'tr', { className: 'menu' + (this.state == 0 ? ' stopped' : ''), id: this.hash }, [
+                'tr', { className: 'menu' + (this.state === 0 ? ' stopped' : ''), id: this.hash }, [
                     'td',, [ 'img', { src: "images/icons/" + this.mime_img + ".png" } ],
                         'td',, this.name,
                         'td',, [
@@ -129,7 +165,7 @@ $(document).ready(function() {
             item.remaining,
             item.down_rate,
             item.up_rate,
-            "<img src='images/icons/" + item.ratio_img + ".png'",
+            "<img src='images/icons/" + item.ratio_img + ".png'"
         ];
 
         /* Find the row for the current item (if there is one) */
@@ -146,30 +182,8 @@ $(document).ready(function() {
             /* Create a new row for this unknown item */
             buildRow(item);
 
-            /* Might as well attach the handlers again to everything */
-            attachHandlers();
+            /* Attach the handlers again */
+            __hookTableHandlers();
         }
     }
 
-    $("#torrentsTable").poll({
-        url: "/torrent/torrents/",
-        interval: 9000,
-        type: "GET",
-        success: function(data) {
-            data = eval("(" + data + ")");
-            $.each(data, function(i,item) {
-
-                /* Process the updated torrent information */
-                processData(item);
-            });
-        }
-    });
-
-    $.getJSON('/torrent/torrents/', function(data) {
-
-        /* Build our initial table of torrents on entry */
-        buildTable(data);
-    });
-
-
-});

@@ -1,9 +1,4 @@
 
-    $(document).ready(function() {
-
-        __filesInit();
-    });
-
     function __filesInit() {
 
         $.getJSON('/index/files/', function(data) {
