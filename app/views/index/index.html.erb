@@ -1,84 +1,75 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-GB">
-    <head>
-        <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
-        <title>rtorrent on rails 0.1</title>
-        <link rel="icon" type="image/png" href="favicon.png">
-        <%= stylesheet_link_tag "styles" %>
-        <%= javascript_include_tag 'jquery/jquery' %>
-        <%= javascript_include_tag 'jquery/jquery-ui' %>
-        <%= javascript_include_tag 'jquery/jrails' %>
-        <%= javascript_include_tag 'jquery/jquery.contextmenu' %>
-        <%= javascript_include_tag 'jquery/jquery.tablesorter' %>
-        <%= javascript_include_tag 'jquery/jquery.tablednd' %>
-        <%= javascript_include_tag 'jquery/jquery.flydom' %>
-        <%= javascript_include_tag 'jquery/jquery.heartbeat' %>
-        <%= javascript_include_tag 'application' %>
-        <%= javascript_include_tag 'torrent' %>
-        <%= javascript_include_tag 'feed' %>
-        <%= javascript_include_tag 'files' %>
-        <%= javascript_include_tag 'poller' %>
-    </head>
-    <body>
-        <div id="header">
-            <div id="beatBar" style="float: right">
-                <img id="heart" src="images/heart.png" />
-            </div>
-            <div id="buttonBar" style="float: right">
-                <img id="addButton" src="images/add.png" />
-                <form id="addForm" method="POST" action="/torrent/add">
-                    <input id="addInput" name="torrent" type="text" size="40" />
-                </form>
-            </div>
-            <h1 id="status"></h1>
+<% content_for :head do %>
+    <%= stylesheet_link_tag "index" %>
+    <%= javascript_include_tag 'jquery/jquery.contextmenu' %>
+    <%= javascript_include_tag 'jquery/jquery.tablesorter' %>
+    <%= javascript_include_tag 'jquery/jquery.tablednd' %>
+    <%= javascript_include_tag 'jquery/jquery.flydom' %>
+    <%= javascript_include_tag 'jquery/jquery.heartbeat' %>
+    <%= javascript_include_tag 'index' %>
+    <%= javascript_include_tag 'torrent' %>
+    <%= javascript_include_tag 'feed' %>
+    <%= javascript_include_tag 'files' %>
+    <%= javascript_include_tag 'poller' %>
+<% end %>
+
+<% content_for :header do %>
+    <div id="beatBar" style="float: right">
+        <img id="heart" src="/images/heart.png" />
+    </div>
+    <div id="buttonBar" style="float: right">
+        <img id="addButton" src="/images/add.png" />
+        <form id="addForm" method="POST" action="/torrent/add">
+            <input id="addInput" name="torrent" type="text" size="40" />
+        </form>
+    </div>
+    <h1 id="status"></h1>
+<% end %>
+
+<% content_for :main do %>
+    <div class="contextMenu" id="torrentContext">
+        <ul>
+            <li id="open"><img src="/images/open.png" /> Open</li>
+            <li id="start"><img src="/images/start.png" /> Start</li>
+            <li id="stop"><img src="/images/stop.png" /> Stop</li>
+            <li id="delete"><img src="/images/delete.png" /> Delete</li>
+        </ul>
+    </div>
+    <div id="spinner">
+        <img src="/images/spinner.gif"/ >
+        Loading torrents...
+    </div>
+    <table id="torrentsTable" class="main">
+        <thead>
+            <tr class="head">
+                <th></th>
+                <th>filename</th>
+                <th>progress</th>
+                <th>size</th>
+                <th>left</th>
+                <th>down</th>
+                <th>up</th>
+                <th>ratio</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+<% end %>
+
+<% content_for :footer do %>
+    <div class="column" style="width: 30%">
+        <div class="section">
+            <h3>FEED</h3>
+            <ul id="feed">
+            </ul>
         </div>
-        <div id="main">
-            <div class="contextMenu" id="torrentContext">
-                <ul>
-                    <li id="open"><img src="images/open.png" /> Open</li>
-                    <li id="start"><img src="images/start.png" /> Start</li>
-                    <li id="stop"><img src="images/stop.png" /> Stop</li>
-                    <li id="delete"><img src="images/delete.png" /> Delete</li>
-                </ul>
-            </div>
-            <div id="spinner">
-                <img src="images/spinner.gif"/ >
-                Loading torrents...
-            </div>
-            <table id="torrentsTable" class="main">
-                <thead>
-                    <tr class="head">
-                        <th></th>
-                        <th>filename</th>
-                        <th>progress</th>
-                        <th>size</th>
-                        <th>left</th>
-                        <th>down</th>
-                        <th>up</th>
-                        <th>ratio</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+    </div>
+    <div class="column" style="width: 50%">
+        <div class="section">
+            <h3>INCOMING</h3>
+            <ul id="incoming">
+            </ul>
         </div>
-        <div id="footer">
-            <div class="column" style="width: 30%">
-                <div class="section">
-                    <h3>FEED</h3>
-                    <ul id="feed">
-                    </ul>
-                </div>
-            </div>
-            <div class="column" style="width: 50%">
-                <div class="section">
-                    <h3>INCOMING</h3>
-                    <ul id="incoming">
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+    </div>
+<% end %>

@@ -24,8 +24,8 @@ h1 {
 }
 
 table.main {
-     margin: 1em 1em 0;
-     width: 100%;
+    margin: 1em 1em 0;
+    width: 100%;
 }
 
 tr head {
@@ -54,18 +54,6 @@ tr.odd {
     background-color: #F4F4F8;
 }
 
-.active {
-    background: #F4F4F8;
-}
-
-.stopped {
-    background: #DEEBFF;
-}
-
-#torrentsTable {
-    display: none;
-}
-
 #spinner {
     display: block;
     width: 40%;
@@ -81,45 +69,19 @@ tr.odd {
 
 #header {
     background: black url(/images/footer-bg.png) repeat-x left top;
+    color: #FFF;
 }
 
 #main {
     background:#f6f6f6;
     font-size: x-small;
     text-align: center;
-    display: none;
+    display: block;
 }
 
 #main a {
-     color: #000;
+    color: #000;
 }
-
-#addInput {
-    margin-top: 10px;
-    display:none; 
-}
-#buttonBar {
-    display:none; 
-}
-
-.prog-border {
-    width: 100px;
-    height: 20px;
-    background: #FFF;
-    padding: 3px;
-    border: 1px solid #DDD;
- }
-
-.prog-bar {
-     height: 20px;
-     background: url(/images/progress_blue.gif) repeat-x;
- }
-
-.prog-text {
-     font-family: 'Lucida Grande';
-     font-size: 7pt;
-     text-align: right;
- }
 
 #footer {
     background: black url(/images/footer-bg.png) repeat-x left top;
@@ -129,7 +91,8 @@ tr.odd {
     overflow: hidden;
     position: absolute;
     bottom: 0px;
-    width: 94%
+    width: 94%;
+    color: #FFF;
 }
 
 #footer a {

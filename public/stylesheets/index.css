@@ -1,0 +1,40 @@
+
+.active {
+    background: #F4F4F8;
+}
+
+.stopped {
+    background: #DEEBFF;
+}
+
+#torrentsTable {
+    display: none;
+}
+
+#addInput {
+    margin-top: 10px;
+    display:none; 
+}
+#buttonBar {
+    display:none; 
+}
+
+.prog-border {
+    width: 100px;
+    height: 20px;
+    background: #FFF;
+    padding: 3px;
+    border: 1px solid #DDD;
+ }
+
+ .prog-bar {
+     height: 20px;
+     background: url(/images/progress_blue.gif) repeat-x;
+ }
+
+ .prog-text {
+     font-family: 'Lucida Grande';
+     font-size: 7pt;
+     text-align: right;
+ }
+
