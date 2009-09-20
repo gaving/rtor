@@ -14,11 +14,11 @@
 <% end %>
 
 <% content_for :header do %>
-    <div id="beatBar" style="float: right">
-        <img id="heart" src="/images/heart.png" />
+    <div id="beatBar">
+        <%= image_tag "heart.png", :id => "heart" %>
     </div>
-    <div id="buttonBar" style="float: right">
-        <img id="addButton" src="/images/add.png" />
+    <div id="buttonBar">
+        <%= image_tag "add.png", :id => "addButton" %>
         <form id="addForm" method="POST" action="/torrent/add">
             <input id="addInput" name="torrent" type="text" size="40" />
         </form>
@@ -29,14 +29,14 @@
 <% content_for :main do %>
     <div class="contextMenu" id="torrentContext">
         <ul>
-            <li id="open"><img src="/images/open.png" /> Open</li>
-            <li id="start"><img src="/images/start.png" /> Start</li>
-            <li id="stop"><img src="/images/stop.png" /> Stop</li>
-            <li id="delete"><img src="/images/delete.png" /> Delete</li>
+            <li id="open"><%= image_tag "open.png" %> Open</li>
+            <li id="start"><%= image_tag "start.png" %> Start</li>
+            <li id="stop"><%= image_tag "stop.png" %> Stop</li>
+            <li id="delete"><%= image_tag "delete.png" %> Delete</li>
         </ul>
     </div>
     <div id="spinner">
-        <img src="/images/spinner.gif"/ >
+        <%= image_tag "spinner.gif" %>
         Loading torrents...
     </div>
     <table id="torrentsTable" class="main">

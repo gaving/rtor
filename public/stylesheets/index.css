@@ -17,6 +17,11 @@
 }
 #buttonBar {
     display:none; 
+    float: right;
+}
+
+#beatBar {
+    float: right;
 }
 
 .prog-border {
