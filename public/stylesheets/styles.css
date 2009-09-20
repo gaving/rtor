@@ -62,6 +62,25 @@ tr.odd {
     background: #DEEBFF;
 }
 
+#torrentsTable {
+    display: none;
+}
+
+#spinner {
+    display: block;
+    width: 40%;
+    height: 100px;
+    position: fixed;
+    top: 30%;
+    left: 30%;
+    background:url(/images/spinner.gif) no-repeat center #fff;
+    text-align:center;
+    padding:10px;
+    font:normal 16px Tahoma, Geneva, sans-serif;
+    border:1px solid #666;
+    overflow: auto;
+}
+
 #header {
     background: black url(/images/footer-bg.png) repeat-x left top;
 }
