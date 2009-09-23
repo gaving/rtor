@@ -133,6 +133,39 @@
 
     function __hookTableHandlers() {
 
+        $.tablesorter.addParser({ 
+            id: 'filesize',
+            is: function(s) {
+                return s.match( new RegExp(/[0-9]+(\.[0-9]+)?\ (Bytes|KB|B|GB|MB|TB)/));
+            },
+            format: function(s) {
+                var suf = s.match(new RegExp(/(Bytes|KB|B|GB|MB|TB)$/))[1];
+                var val = s.match(new RegExp(/^[0-9]+(\.[0-9]+)?/));
+
+                if (typeof(val) == undefined || !val) {
+                    return 0;
+                }
+
+                var num = parseFloat(val[0]);
+
+                switch( suf ) {
+                    case 'B':
+                    return num;
+                    case 'KB':
+                    return num * 1024;
+                    case 'MB':
+                    return num * 1024 * 1024;
+                    case 'GB':
+                    return num * 1024 * 1024 * 1024;
+                    case 'TB':
+                    return num * 1024 * 1024 * 1024 * 1024;
+                    default:
+                    return num;
+                }
+            },
+            type: 'numeric'
+        });
+
         /* Attach the table sorter */
         $("#torrentsTable").tablesorter();
 
