@@ -1,6 +1,5 @@
 development:
   rtorret_scgi: http://192.168.1.100/RPC2
-  growl_host: 192.168.1.102
   download_directory: /Volumes/incoming/
   access_directory: /Volumes/incoming/
   feed: = http://rss.slashdot.org/Slashdot/slashdot
@@ -9,7 +8,6 @@ development:
 
 test:
   rtorret_scgi: http://192.168.1.100/RPC2
-  growl_host: 192.168.1.102
   download_directory: /Volumes/incoming/
   access_directory: /Volumes/incoming/
   feed: = http://rss.slashdot.org/Slashdot/slashdot
@@ -18,7 +16,6 @@ test:
 
 production:
   rtorret_scgi: http://192.168.1.100/RPC2
-  growl_host: 192.168.1.102
   download_directory: /mnt/media/incoming
   access_directory: /Volumes/incoming/
   feed: = http://rss.slashdot.org/Slashdot/slashdot

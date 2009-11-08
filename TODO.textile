@@ -6,8 +6,8 @@ h2. 0.2+
 * [_] Draggable/collapsable panels at the bottom
 * [_] Make separate views for the seeding and the downloading
 * [_] Admin interface
-* [_] Prowl would be good. Though, I'm thinking a standalone app might be
-      better for the notification stuff.
+* [_] Prowl would be good. Though, I'm thinking a standalone DBUS enabled app
+might be better for the notification stuff.
 
 h2. 0.1
 
@@ -15,10 +15,10 @@ h2. 0.1
 * [x] Heartbeat and timeout stuff for abandoning the constant refreshes
 * [x] Get the torrents feed working
 * [x] Make the download box actually do something
-* [x] Interface it with Growl for torrent events
+* [x] Interface it with Growl for torrent events (Since removed)
 * [_] Configuration, both at the backend and frontend
+* [x] Use the multicall RPC method instead of the brain dead way of doing it now
 * [_] Fix the sorting. Move back to sorttable.js?
 * [_] Context sensitive menu items
 * [_] Make open action work
-* [_] Growl on torrent completed, send email, txt, tweet?
 * [_] Update the header on an operation

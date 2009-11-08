@@ -1,6 +1,5 @@
 # Filters added to this controller apply to all controllers in the application.
 # Likewise, all the methods added will be available for all controllers.
-require 'ruby-growl'
 
 class ApplicationController < ActionController::Base
     helper :all # include all helpers, all the time
@@ -42,56 +41,11 @@ class ApplicationController < ActionController::Base
         return resp
     end
 
-    def do_growl (body, subject = "rtor")
-        g = Growl.new APP_CONFIG['growl_host'], "rtor", ["rtor Notification"]
-        g.notify "rtor Notification", subject, body
-    end
-
     def get_file_list()
         begin
             return Dir.new(APP_CONFIG['download_directory']).entries.sort.reject {|f| [".", ".."].include? f}[0,APP_CONFIG['max_downloads']]
         rescue Errno::ENOENT
             return []
-        end
-    end
-
-    def file_type(file_name)
-        File.extname(file_name).gsub( /^\./, '' ).downcase
-    end
-
-    def get_mime_icon(file)
-        case file_type(file)
-        when 'avi', 'mkv'
-            return 'mime-video'
-        when 'jpg', 'gif', 'jpeg'
-            return 'mime-image'
-        when 'mp3', 'wav', 'ogg'
-            return 'mime-audio'
-        when 'rar', 'zip', 'gz', 'tar'
-            return 'mime-archive'
-        when 'txt'
-            return 'mime-text'
-        when nil
-            return 'mime-folder'
-        else
-            return 'mime-unknown'
-        end
-    end
-
-    def get_ratio_icon(ratio)
-        ratio = Float(ratio)
-        if ratio >= 0.90
-            return 'face-grin'
-        elsif ratio >= 0.75
-            return 'face-smile-big'
-        elsif ratio >= 0.60
-            return 'face-smile'
-        elsif ratio >= 0.50
-            return 'face-plain'
-        elsif ratio >= 0.30
-            return 'face-sad'
-        else
-            return 'face-crying'
         end
     end
 
