@@ -26,6 +26,8 @@ h1 {
 table.main {
     margin: 1em 1em 0;
     width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
 tr head {

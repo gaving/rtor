@@ -133,7 +133,7 @@
 
     function __hookTableHandlers() {
 
-        $.tablesorter.addParser({ 
+        $.tablesorter.addParser({
             id: 'filesize',
             is: function(s) {
                 return s.match( new RegExp(/[0-9]+(\.[0-9]+)?\ (Bytes|KB|B|GB|MB|TB)/));
@@ -148,7 +148,7 @@
 
                 var num = parseFloat(val[0]);
 
-                switch( suf ) {
+                switch (suf) {
                     case 'B':
                     return num;
                     case 'KB':
@@ -217,8 +217,6 @@
     function processData(item) {
 
         var order = [
-            "<img src='/images/icons/" + item.mime_img + ".png'",
-            item.name,
             "<div class='prog-border'><div class='prog-bar' style='width: " + item.percentage + "%'><div class='prog-text'>" + item.percentage + "%</div></div></div>",
             item.size,
             item.remaining,
@@ -231,7 +229,7 @@
         var row = $("#" + item.hash);
 
         if ($(row).attr('id')) {
-            $($(row).children('td')).each(function(index, cell) {
+            $($(row).children('td:gt(1)')).each(function(index, cell) {
 
                 /* Set all the cells in some sort of order */
                 $(cell).html(order[index]);

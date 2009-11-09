@@ -6,6 +6,7 @@ h2. 0.2+
 * [_] Draggable/collapsable panels at the bottom
 * [_] Make separate views for the seeding and the downloading
 * [_] Admin interface
+* [_] Fix row ratio image flicker
 * [_] Prowl would be good. Though, I'm thinking a standalone DBUS enabled app
 might be better for the notification stuff.
 
@@ -22,3 +23,8 @@ h2. 0.1
 * [_] Context sensitive menu items
 * [_] Make open action work
 * [_] Update the header on an operation
+
+h2 Resources
+
+* Overflow issue on large file sizes: http://libtorrent.rakshasa.no/ticket/1303
+* http://code.google.com/p/transdroid/issues/detail?id=31

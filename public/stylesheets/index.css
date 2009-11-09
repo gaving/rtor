@@ -1,23 +1,15 @@
 
-.active {
-    background: #F4F4F8;
-}
-
-.stopped {
-    background: #DEEBFF;
-}
-
 #torrentsTable {
     display: none;
 }
 
 #addInput {
     margin-top: 10px;
-    display:none; 
+    display:none;
 }
 
 #buttonBar {
-    display:none; 
+    display:none;
     float: right;
 }
 
@@ -25,7 +17,21 @@
     float: right;
 }
 
-.prog-border {
+tr {
+    cursor: move;
+}
+
+tr.active {
+    background: #F4F4F8;
+}
+
+tr.stopped {
+    background: #DEEBFF !important;
+    font-style: oblique;
+    color: #666;
+}
+
+div.prog-border {
     width: 100px;
     height: 20px;
     background: #FFF;
@@ -33,12 +39,20 @@
     border: 1px solid #DDD;
  }
 
-.prog-bar {
+div.prog-bar {
     height: 20px;
     background: url(/images/progress_blue.gif) repeat-x;
 }
 
-.prog-text {
+div.complete {
+    background: url(/images/progress_blue.gif) repeat-x;
+}
+
+div.incomplete {
+    background: url(/images/progress_blue.gif) repeat-x;
+}
+
+div.prog-text {
     font-family: 'Lucida Grande';
     font-size: 7pt;
     text-align: right;
