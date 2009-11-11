@@ -31,29 +31,39 @@ tr.stopped {
     color: #666;
 }
 
-div.prog-border {
-    width: 100px;
-    height: 20px;
-    background: #FFF;
-    padding: 3px;
-    border: 1px solid #DDD;
- }
-
-div.prog-bar {
-    height: 20px;
-    background: url(/images/progress_blue.gif) repeat-x;
+td.ratioCell {
+    text-align: center;
 }
 
-div.complete {
-    background: url(/images/progress_blue.gif) repeat-x;
+div.progress-container {
+  border: 1px solid #ccc;
+  width: 100px;
+  height: 20px;
+  margin: 2px 5px 2px 0;
+  padding: 1px;
+  float: left;
+  background: #FFF;
 }
 
-div.incomplete {
-    background: url(/images/progress_blue.gif) repeat-x;
+div.progress-container > div {
+    height: 20px;
 }
 
 div.prog-text {
     font-family: 'Lucida Grande';
     font-size: 7pt;
     text-align: right;
+    font-weight: bolder;
+}
+
+div.complete {
+    background-color: #C3D9FF;
+}
+
+div.incomplete {
+    background-color: #CDEB8B;
+}
+
+div.hashing {
+    background-color: #FF7400;
 }

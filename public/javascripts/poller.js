@@ -183,7 +183,7 @@
     function buildTable(data) {
 
         /* Build each table row */
-        $.each(data,function(index,item) {
+        $.each(data, function(index,item) {
             buildRow(item);
         });
 
@@ -192,23 +192,27 @@
 
     function buildRow(item) {
 
+        var status = (item.complete == 1 ? 'complete' : (item.is_checking == 1 ? 'hashing' : 'incomplete'));
+
         $('#torrentsTable tbody').tplAppend(item, function() {
             return [
                 'tr', { className: 'menu' + (this.state === 0 ? ' stopped' : ''), id: this.hash }, [
                     'td',, [ 'img', { src: "/images/icons/" + this.mime_img + ".png" } ],
                         'td',, this.name,
                         'td',, [
-                            'div', { className: 'prog-border' }, [
-                                'div', { className: 'prog-bar', style: { 'width': this.percentage + "%" } }, [
+                            'div', { className: 'progress-container' }, [
+                                'div', { className: status, style: { 'width': this.percentage + "%" } }, [
                                     'div', { className: 'prog-text' }, this.percentage + "%"
                                 ]
                             ]
                         ],
-                        'td',, this.size,
-                        'td',, this.remaining,
-                        'td',, this.down_rate,
-                        'td',, this.up_rate,
-                        'td', { style: { 'text-align': 'center' } }, [ 'img', { src: "/images/icons/" + this.ratio_img + ".png" } ]
+                    'td',, this.size,
+                    'td',, this.remaining,
+                    'td',, this.down_rate,
+                    'td',, this.up_rate,
+                    'td', { className: 'ratioCell' }, [
+                        'img', { src: "/images/icons/" + this.ratio_img + ".png" }
+                    ]
                 ]
             ];
         });
@@ -216,8 +220,10 @@
 
     function processData(item) {
 
+        var status = (item.complete == 1 ? 'complete' : (item.is_checking == 1 ? 'hashing' : 'incomplete'));
+
         var order = [
-            "<div class='prog-border'><div class='prog-bar' style='width: " + item.percentage + "%'><div class='prog-text'>" + item.percentage + "%</div></div></div>",
+            "<div class='progress-container'><div class='" + status + "' style='width: " + item.percentage + "%'><div class='prog-text'>" + item.percentage + "%</div></div></div>",
             item.size,
             item.remaining,
             item.down_rate,
