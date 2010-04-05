@@ -196,7 +196,7 @@
 
         $('#torrentsTable tbody').tplAppend(item, function() {
             return [
-                'tr', { className: 'menu' + (this.is_active == 0 ? ' stopped' : ''), id: this.hash }, [
+                'tr', { className: 'menu' + (this.is_active == 0 ? ' stopped' : '') + (this.complete == 1 ? ' complete' : ' incomplete'), id: this.hash }, [
                     'td',, [ 'img', { src: "/images/icons/" + this.mime_img + ".png" } ],
                         'td',, this.name,
                         'td',, [

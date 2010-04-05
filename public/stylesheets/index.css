@@ -26,6 +26,13 @@ tr.active {
     background: #F4F4F8;
 }
 
+tr.complete {
+}
+
+tr.incomplete {
+    font-weight: bolder;
+}
+
 tr.stopped {
     background: #DEEBFF !important;
     font-style: oblique;
