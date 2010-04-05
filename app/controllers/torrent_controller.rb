@@ -43,6 +43,7 @@ class TorrentController < ApplicationController
 
     def torrents
         torrents = Torrent.all
+        torrents = torrents.sort_by { |torrent| torrent.remaining }.reverse
         render :text => torrents.to_json
     end
 
