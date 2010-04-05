@@ -88,10 +88,8 @@ class Torrent
             return 'mime-archive'
         when 'txt'
             return 'mime-text'
-        when nil
-            return 'mime-folder'
         else
-            return 'mime-unknown'
+            return 'folder'
         end
     end
 
