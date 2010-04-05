@@ -1,6 +1,7 @@
 
 #torrentsTable {
     display: none;
+    height: 500px;
 }
 
 #addInput {
@@ -35,7 +36,7 @@ td.ratioCell {
     text-align: center;
 }
 
-div.progress-container {
+div.progressContainer {
   border: 1px solid #ccc;
   width: 100px;
   height: 20px;
@@ -45,11 +46,11 @@ div.progress-container {
   background: #FFF;
 }
 
-div.progress-container > div {
+div.progressContainer > div {
     height: 20px;
 }
 
-div.prog-text {
+div.progressText {
     font-family: 'Lucida Grande';
     font-size: 7pt;
     text-align: right;

@@ -30,12 +30,8 @@
         });
 
         $('#addButton').click(function() {
-            $("#addInput").toggle();
+            __callAddDialog();
             this.toggle();
-        });
-
-        $('#addForm').submit(function() {
-            alert("TODO: Actually add the torrent");
         });
 
         $('#main').fadeIn("slow");
@@ -43,5 +39,35 @@
         $("#beatBar").heartBeat({
             delayBetweenAnimation:9000,
             delay:1000
+        });
+    }
+
+    function __callAddDialog() {
+        $("#dialog").load('/index/add', function() {
+            $(this).dialog({
+                title: 'Add torrent',
+                position: 'middle',
+                resizable: false,
+                bgiframe: true,
+                modal: true,
+                width: 660,
+                overlay: {
+                    backgroundColor: '#000',
+                    opacity: 0.5
+                },
+                buttons: {
+                    Add: function() {
+
+                        /* Close the dialog on submit */
+                        // $(this).dialog('close');
+                        // $(this).dialog('destroy');
+                    },
+                    Cancel: function() {
+                        // $(this).dialog('close');
+                        $(this).dialog('destroy');
+                        // $(this).remove();
+                    }
+                }
+            });
         });
     }

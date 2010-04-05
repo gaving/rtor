@@ -2,15 +2,6 @@ require 'cgi'
 
 class TorrentController < ApplicationController
 
-    def index
-        torrents = Torrent.all
-    end
-
-    def show
-        torrent = Torrent.find(params[:id])
-        render :text => torrent.name
-    end
-
     def add
         t = params[:torrent]
         t << '&sessu=' + CGI.escape(APP_CONFIG['cookie'])
@@ -35,6 +26,11 @@ class TorrentController < ApplicationController
         render :text => { 'path' => path }.to_json
     end
 
+    def show
+        torrent = Torrent.find(params[:id])
+        render :text => torrent.name
+    end
+
     def start
         t = Torrent.find(params[:id])
         render :text => { 'started' => call_wrapper("d.start", t.hash) }.to_json
@@ -43,10 +39,6 @@ class TorrentController < ApplicationController
     def stop
         t = Torrent.find(params[:id])
         render :text => { 'stopped' => call_wrapper("d.stop", t.hash) }.to_json
-    end
-
-    def status
-        render :text => "some sort of status check to make sure everything is ok"
     end
 
     def torrents

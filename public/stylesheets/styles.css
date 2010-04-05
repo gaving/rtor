@@ -79,6 +79,8 @@ tr.odd {
     font-size: x-small;
     text-align: center;
     display: block;
+    height: 600px;
+    overflow: auto;
 }
 
 #main a {

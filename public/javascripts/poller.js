@@ -196,13 +196,13 @@
 
         $('#torrentsTable tbody').tplAppend(item, function() {
             return [
-                'tr', { className: 'menu' + (this.state === 0 ? ' stopped' : ''), id: this.hash }, [
+                'tr', { className: 'menu' + (this.is_active == 0 ? ' stopped' : ''), id: this.hash }, [
                     'td',, [ 'img', { src: "/images/icons/" + this.mime_img + ".png" } ],
                         'td',, this.name,
                         'td',, [
-                            'div', { className: 'progress-container' }, [
+                            'div', { className: 'progressContainer' }, [
                                 'div', { className: status, style: { 'width': this.percentage + "%" } }, [
-                                    'div', { className: 'prog-text' }, this.percentage + "%"
+                                    'div', { className: 'progressText' }, this.percentage + "%"
                                 ]
                             ]
                         ],
@@ -221,9 +221,10 @@
     function processData(item) {
 
         var status = (item.complete == 1 ? 'complete' : (item.is_checking == 1 ? 'hashing' : 'incomplete'));
+        var isActive = (item.is_active == 1)
 
         var order = [
-            "<div class='progress-container'><div class='" + status + "' style='width: " + item.percentage + "%'><div class='prog-text'>" + item.percentage + "%</div></div></div>",
+            "<div class='progressContainer'><div class='" + status + "' style='width: " + item.percentage + "%'><div class='progressText'>" + item.percentage + "%</div></div></div>",
             item.size,
             item.remaining,
             item.down_rate,
@@ -232,10 +233,19 @@
         ];
 
         /* Find the row for the current item (if there is one) */
-        var row = $("#" + item.hash);
+        var $row = $("#" + item.hash);
 
-        if ($(row).attr('id')) {
-            $($(row).children('td:gt(1)')).each(function(index, cell) {
+        if ($row.attr('id')) {
+
+            if (item.is_active) {
+                $row.removeClass("stopped");;
+                $row.addClass("active");
+            } else {
+                $row.removeClass("active");;
+                $row.addClass("stopped");
+            }
+
+            $row.children('td:gt(1)').each(function(index, cell) {
 
                 /* Set all the cells in some sort of order */
                 $(cell).html(order[index]);

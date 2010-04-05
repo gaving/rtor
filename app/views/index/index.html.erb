@@ -1,5 +1,6 @@
 <% content_for :head do %>
     <%= stylesheet_link_tag "index" %>
+    <%= stylesheet_link_tag 'smoothness/jquery-ui-1.7.1.custom.css' %>
     <%= javascript_include_tag 'jquery/jquery.contextmenu' %>
     <%= javascript_include_tag 'jquery/jquery.tablesorter' %>
     <%= javascript_include_tag 'jquery/jquery.tablednd' %>
@@ -19,9 +20,6 @@
     </div>
     <div id="buttonBar">
         <%= image_tag "add.png", :id => "addButton" %>
-        <form id="addForm" method="POST" action="/torrent/add">
-            <input id="addInput" name="torrent" type="text" size="40" />
-        </form>
     </div>
     <h1 id="status"></h1>
 <% end %>

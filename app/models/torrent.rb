@@ -4,8 +4,19 @@ require 'cgi'
 APP_CONFIG = YAML.load_file("#{RAILS_ROOT}/config/config.yml")[RAILS_ENV]
 
 def server_call(*args)
-    s = XMLRPC::Client.new2(APP_CONFIG['rtorrent_scgi'])
-    s.call(*args)
+    begin
+        s = XMLRPC::Client.new2(APP_CONFIG['rtorrent_scgi'])
+        s.call(*args)
+    rescue XMLRPC::FaultException => e
+        puts "Error: "
+        puts e.faultCode
+        puts e.faultString
+    end
+end
+
+class TorrentFile
+    def initialize(details)
+    end
 end
 
 class Torrent
@@ -43,6 +54,7 @@ class Torrent
                 d.get_state= d.get_completed_bytes= d.get_size_bytes= d.get_left_bytes=
                 d.get_down_rate= d.get_up_rate= d.get_bytes_done= d.get_up_total=
                 d.get_creation_date= d.get_complete= d.is_active= d.is_hash_checking=
+                d.get_ratio=
             )
             completed = server_call("d.multicall", methods)
             completed.map { |t| new(t) }
@@ -99,23 +111,39 @@ class Torrent
         end
     end
 
+    def get_files(hash)
+        begin
+            methods = %w(f.get_path=)
+            # f.get_path= f.get_path_components= f.get_path_depth=
+                # f.get_is_open= f.get_priority= f.get_size_bytes=
+                # f.get_completed_chunks= f.get_size_chunks=)
+            files = server_call("f.multicall", hash, '1', methods)
+            puts files
+            files.map { |t| TorrentFile.new(t) }
+        rescue SocketError, Errno::ECONNREFUSED => e
+            print "Error: Could not connect to server '%s' (%s)\r\n" % [APP_CONFIG['rtorrent_scgi'], e]
+            files = []
+        end
+        return files
+    end
+
     def initialize(details)
         @hash, @name, @base_path, @state, @completed_bytes, @size, @left_bytes, @down_rate,
-        @up_rate, @downloaded, @uploaded, @creation_date, @complete, @is_active, @is_checking = details
+        @up_rate, @downloaded, @uploaded, @creation_date, @complete, @is_active, @is_checking, @ratio = details
 
         begin
             @remaining = @size - @downloaded
             @percentage = sprintf("%.2f", (Float(@downloaded) / Float(@size) * 100))
-            raw_ratio = Float(@uploaded) / Float(@size)
-            @ratio = sprintf("%.2f", raw_ratio)
+            @ratio = ("%0.2f" % (Float(@ratio) / 1000.0))
             @size = help.number_to_human_size(@size)
             @uploaded = help.number_to_human_size(@uploaded)
             @remaining = help.number_to_human_size(@remaining)
             @downloaded = help.number_to_human_size(@downloaded)
             @down_rate = help.number_to_human_size(@down_rate)
             @up_rate = help.number_to_human_size(@up_rate)
-            @ratio_img = ratio_img(raw_ratio)
+            @ratio_img = ratio_img(@ratio.to_f)
             @mime_img = mime_img(@name)
+            # @files = get_files(@hash)
         rescue => e
             print "Error: %s\r\n" % e
         end

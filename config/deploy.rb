@@ -10,11 +10,11 @@ set :deploy_to, "/var/www/#{application}"
 
 ssh_options[:port] = 40
 
-server "192.168.1.100", :app, :web, :db, :primary => true
+server "sokar.local", :app, :web, :db, :primary => true
 
 namespace :deploy do
     task :copy_config do
-        system "scp -P 40 config/config.yml gavin@192.168.1.100:#{shared_path}/"
+        system "scp -P 40 config/config.yml gavin@sokar.local:#{shared_path}/"
         run  "ln -nfs #{shared_path}/config.yml #{release_path}/config/config.yml"
     end
 end
