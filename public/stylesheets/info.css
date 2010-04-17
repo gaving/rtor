@@ -1,0 +1,174 @@
+
+#wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    display: none;
+}
+
+#wrapper.o0, #wrapper.o180 {
+    width: 768px;
+    overflow:hidden;
+}
+
+#wrapper.o90, #wrapper.o-90 {
+    width: 1024px;
+    overflow:hidden;
+}
+
+#content {
+    margin: 0 auto;
+    width: 100%;
+    left: 60px;
+}
+
+#torrents {
+    position: relative;
+    clear: both;
+}
+
+div.torrent-wrapper {
+    height: 60px;
+    left: 80px;
+    position: relative;
+    /* width: 900px; */
+    clear: both;
+    width: 80%;
+}
+
+div.torrent.active {
+    color: #fff !important;
+    background-image:
+        -moz-linear-gradient(top, rgba(255,255,255,0.3), rgba(255,255,255,0) 2.5%, rgba(255,255,255,0)),
+        -moz-linear-gradient(bottom, rgba(255,255,255,0.3), rgba(255,255,255,0) 2.5%, rgba(255,255,255,0)),
+        -moz-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.4)),
+        -moz-linear-gradient(left, #5485b1, #5485b1 24.9%, #3cafc5 25%, #3cafc5 32.9%, #55c8e4 33%, #55c8e4 74.9%, #3cafc5 75%, #3cafc5 90.9%, #5485b1 91%, #5485b1);
+    background-image:
+        -webkit-gradient(linear, left top, left bottom,
+            from(rgba(255,255,255,0.3)),
+            color-stop(0.025, rgba(255,255,255,0)),
+            to(rgba(255,255,255,0))
+        ),
+        -webkit-gradient(linear, left bottom, left top,
+            from(rgba(255,255,255,0.3)),
+            color-stop(0.025, rgba(255,255,255,0)),
+            to(rgba(255,255,255,0))
+        ),
+        -webkit-gradient(linear, left top, left bottom,
+            from(rgba(0,0,0,0)), to(rgba(0,0,128,0.4))
+        ),
+        -webkit-gradient(linear, left top, right top,
+            from(#5485b1),
+            color-stop(0.249, #5485b1),
+            color-stop(0.25, #3cafc5),
+            color-stop(0.329, #3cafc5),
+            color-stop(0.33, #55c8e4),
+            color-stop(0.749, #55c8e4),
+            color-stop(0.75, #3cafc5),
+            color-stop(0.909, #3cafc5),
+            color-stop(0.91, #5485b1),
+            to(#5485b1)
+        ) !important;
+}
+
+div.torrent-name {
+    font:15px/17px Futura;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-align: left;
+    width: 100%;
+}
+
+div.torrent-name span {
+    padding-left:5px;
+    font:10px/17px Futura;
+    color:#666;
+}
+
+div.torrent.complete {
+    background: #8abb29;
+    background-image:
+        -moz-linear-gradient(top, rgba(255,255,255,0.3), rgba(255,255,255,0) 2.5%, rgba(255,255,255,0)),
+        -moz-linear-gradient(bottom, rgba(255,255,255,0.3), rgba(255,255,255,0) 2.5%, rgba(255,255,255,0)),
+        -moz-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.4)),
+        -moz-linear-gradient(left, #8abb29, #8abb29 24.9%, #a5df3b 25%, #a5df3b 32.9%, #b8ff41 33%, #b8ff41 74.9%, #a5df3b 75%, #a5df3b 90.9%, #8abb29 91%, #8abb29);
+    background-image:
+        -webkit-gradient(linear, left top, left bottom,
+            from(rgba(255,255,255,0.3)),
+            color-stop(0.025, rgba(255,255,255,0)),
+            to(rgba(255,255,255,0))
+        ),
+        -webkit-gradient(linear, left bottom, left top,
+            from(rgba(255,255,255,0.3)),
+            color-stop(0.025, rgba(255,255,255,0)),
+            to(rgba(255,255,255,0))
+        ),
+        -webkit-gradient(linear, left top, left bottom,
+            from(rgba(0,0,0,0)), to(rgba(0,0,0,0.4))
+        ),
+        -webkit-gradient(linear, left top, right top,
+            from(#8abb29),
+            color-stop(0.249, #8abb29),
+            color-stop(0.25, #a5df3b),
+            color-stop(0.329, #a5df3b),
+            color-stop(0.33, #b8ff41),
+            color-stop(0.749, #b8ff41),
+            color-stop(0.75, #a5df3b),
+            color-stop(0.909, #a5df3b),
+            color-stop(0.91, #8abb29),
+            to(#8abb29)
+        ) !important;
+}
+
+div.torrent {
+    float: left;
+    margin-top: 24px;
+    width: 80%;
+    height: 15px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    color: transparent;
+    background: #6b7071;
+    background-image:
+        -moz-linear-gradient(top, rgba(255,255,255,0.3), rgba(255,255,255,0) 2.5%, rgba(255,255,255,0)),
+        -moz-linear-gradient(bottom, rgba(255,255,255,0.3), rgba(255,255,255,0) 2.5%, rgba(255,255,255,0)),
+        -moz-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.4)),
+        -moz-linear-gradient(left, #4b4c4d, #4b4c4d 24.9%, #575b5c 25%, #575b5c 32.9%, #6b7071 33%, #6b7071 74.9%, #575b5c 75%, #575b5c 90.9%, #4b4c4d 91%, #4b4c4d);
+    background-image:
+        -webkit-gradient(linear, left top, left bottom,
+            from(rgba(255,255,255,0.3)),
+            color-stop(0.025, rgba(255,255,255,0)),
+            to(rgba(255,255,255,0))
+        ),
+        -webkit-gradient(linear, left bottom, left top,
+            from(rgba(255,255,255,0.3)),
+            color-stop(0.025, rgba(255,255,255,0)),
+            to(rgba(255,255,255,0))
+        ),
+        -webkit-gradient(linear, left top, left bottom,
+            from(rgba(0,0,0,0)), to(rgba(0,0,0,0.4))
+        ),
+        -webkit-gradient(linear, left top, right top,
+            from(#4b4c4d),
+            color-stop(0.249, #4b4c4d),
+            color-stop(0.25, #575b5c),
+            color-stop(0.329, #575b5c),
+            color-stop(0.33, #6b7071),
+            color-stop(0.749, #6b7071),
+            color-stop(0.75, #575b5c),
+            color-stop(0.909, #575b5c),
+            color-stop(0.91, #4b4c4d),
+            to(#4b4c4d)
+        );
+    font:10px/18px Futura;
+    margin-bottom: 10px;
+    padding: 3px 0 10px 0;
+    text-transform: lowercase;
+    text-align: center;
+    text-indent: 10px;
+    margin-left: 2px;
+    margin-right: 3px;
+    color: #fff !important;
+}
+

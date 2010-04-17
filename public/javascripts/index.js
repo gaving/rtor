@@ -1,41 +1,49 @@
 
-    $(document).ready(function() {
+var RTOR = {
 
-        __torrentInit(function() {
-            __feedInit();
-            __filesInit();
-            __pollInit();
-            __hookEvents();
-        });
-    });
+    init: function() {
 
+        $('#main').fadeIn("slow");
 
-    function __callTorrentController(controller, hash, success, failure) {
-        $.ajax({
-            type: 'GET',
-            url: '/torrent/' + controller,
-            data: hash,
-            cache: false,
-            dataType: 'json',
-            success: function(data) {
-                if (success !== undefined) {
-                    success(data);
-                }
-            },
-            error: function(data) {
-                if (failure !== undefined) {
-                    failure(data);
-                }
+        _callTorrentController('info', {}, function(data) {
+            var label = "";
+            if (data.downloading) {
+                label += data.downloading + " downloading, ";
             }
+            if (data.completed) {
+                label += data.completed + " completed";
+            }
+            $('div #status').html(label);
         });
-    }
 
-    function __hookEvents() {
-        $(document).bind('keydown', 'ctrl+c', function() { __hookTogglePoller(); });
-    }
+        this.module();
+    },
 
-    function __hookTogglePoller() {
-        if (confirm('Are you sure you wish to ' + ((!polling) ? 'resume' : 'pause') + ' updates?')) {
-            __togglePoller();
+    module: function() {
+        Poller.init();
+    }
+}
+
+$(document).ready(function() {
+    RTOR.init();
+});
+
+function _callTorrentController(controller, hash, success, failure) {
+    $.ajax({
+        type: 'GET',
+        url: '/torrent/' + controller,
+        data: hash,
+        cache: false,
+        dataType: 'json',
+        success: function(data) {
+            if (success !== undefined) {
+                success(data);
+            }
+        },
+        error: function(data) {
+            if (failure !== undefined) {
+                failure(data);
+            }
         }
-    }
+    });
+}

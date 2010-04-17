@@ -1,23 +1,14 @@
 <% content_for :head do %>
-    <%= stylesheet_link_tag "index" %>
+    <%= stylesheet_link_tag "info" %>
     <%= stylesheet_link_tag 'smoothness/jquery-ui-1.7.1.custom.css' %>
-    <%= javascript_include_tag 'jquery/jquery.contextmenu' %>
-    <%= javascript_include_tag 'jquery/jquery.tablesorter' %>
-    <%= javascript_include_tag 'jquery/jquery.tablednd' %>
-    <%= javascript_include_tag 'jquery/jquery.flydom' %>
     <%= javascript_include_tag 'jquery/jquery.hotkeys' %>
-    <%= javascript_include_tag 'jquery/jquery.heartbeat' %>
+    <%= javascript_include_tag 'jquery/jquery.doubletap' %>
     <%= javascript_include_tag 'index' %>
-    <%= javascript_include_tag 'torrent' %>
-    <%= javascript_include_tag 'feed' %>
-    <%= javascript_include_tag 'files' %>
+    <%= javascript_include_tag 'poll' %>
     <%= javascript_include_tag 'poller' %>
 <% end %>
 
 <% content_for :header do %>
-    <div id="beatBar">
-        <%= image_tag "heart.png", :id => "heart" %>
-    </div>
     <div id="buttonBar">
         <%= image_tag "add.png", :id => "addButton" %>
     </div>
@@ -25,50 +16,12 @@
 <% end %>
 
 <% content_for :main do %>
-    <div class="contextMenu" id="torrentContext">
-        <ul>
-            <li id="open"><%= image_tag "open.png" %> Open</li>
-            <li id="start"><%= image_tag "start.png" %> Start</li>
-            <li id="stop"><%= image_tag "stop.png" %> Stop</li>
-            <li id="delete"><%= image_tag "delete.png" %> Delete</li>
-        </ul>
-    </div>
     <div id="spinner">
         <%= image_tag "spinner.gif" %>
-        Loading torrents...
     </div>
-    <table id="torrentsTable" class="main">
-        <thead>
-            <tr class="head">
-                <th></th>
-                <th>filename</th>
-                <th>progress</th>
-                <th class="{sorter: 'filesize'}">size</th>
-                <th>left</th>
-                <th>down</th>
-                <th>up</th>
-                <th>ratio</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-<% end %>
-
-<% content_for :footer do %>
-    <div class="column" style="width: 30%">
-        <div class="section">
-            <h3>FEED</h3>
-            <ul id="feed">
-            </ul>
-        </div>
-    </div>
-    <div class="column" style="width: 50%">
-        <div class="section">
-            <h3>INCOMING</h3>
-            <ul id="incoming">
-            </ul>
+    <div id="wrapper">
+        <div id="content">
+            <div id="torrents"></div>
         </div>
     </div>
 <% end %>

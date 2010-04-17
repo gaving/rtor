@@ -33,6 +33,7 @@ class Torrent
     attr_reader :remaining
     attr_reader :percentage
     attr_reader :ratio
+    attr_reader :is_active
 
     attr_accessor :ratio_img
     attr_accessor :mime_img

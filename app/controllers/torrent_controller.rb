@@ -43,7 +43,15 @@ class TorrentController < ApplicationController
 
     def torrents
         torrents = Torrent.all
-        torrents = torrents.sort_by { |torrent| torrent.remaining }.reverse
+        # torrents = torrents.sort_by { |torrent| [torrent.remaining, torrent.complete] }
+
+        torrents.sort! do |torrentA, torrentB|
+            res = torrentA.remaining <=> torrentB.remaining
+            res = torrentA.is_active <=> torrentB.is_active
+            res = torrentA.complete <=> torrentB.complete
+            res
+        end
+
         render :text => torrents.to_json
     end
 

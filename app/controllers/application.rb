@@ -41,12 +41,4 @@ class ApplicationController < ActionController::Base
         return resp
     end
 
-    def get_file_list()
-        begin
-            return Dir.new(APP_CONFIG['download_directory']).entries.sort.reject {|f| [".", ".."].include? f}[0,APP_CONFIG['max_downloads']]
-        rescue Errno::ENOENT
-            return []
-        end
-    end
-
 end
