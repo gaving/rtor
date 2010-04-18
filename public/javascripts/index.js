@@ -5,6 +5,36 @@ var RTOR = {
 
         $('#main').fadeIn("slow");
 
+        $("#header").mouseover(function () {
+            $("#buttonBar").show();
+        }).mouseout(function () {
+            $("#buttonBar").hide();
+        });
+
+        this.updateTitle();
+        this.module();
+    },
+
+    module: function() {
+        Poller.init();
+    },
+
+    flash: function(msg) {
+        $.jnotifica(msg,{
+            margin : 10,
+            width  : 400,
+            effect : 'fade',
+            close : false,
+            padding: 25,
+            msgCss : {
+                textAlign : 'center',
+                fontSize  : '138.5%',
+                fontWeight: 'bold'
+            }
+        });
+    },
+
+    updateTitle: function() {
         _callTorrentController('info', {}, function(data) {
             var label = "";
             if (data.downloading) {
@@ -14,13 +44,8 @@ var RTOR = {
                 label += data.completed + " completed";
             }
             $('div #status').html(label);
+            $('title').text(label);
         });
-
-        this.module();
-    },
-
-    module: function() {
-        Poller.init();
     }
 }
 

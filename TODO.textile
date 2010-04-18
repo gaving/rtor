@@ -2,12 +2,11 @@ h1. Rtorrent on rails TODO list
 
 h2. 0.2+
 
+* [x] Revamp interface, make it more HTML5y
 * [_] View torrent information
+* [_] Fancy menu
 * [_] Drag and drop torrents (GWT?)
-* [_] Draggable/collapsable panels at the bottom
-* [_] Make separate views for the seeding and the downloading
-* [_] Admin interface
-* [_] Fix row ratio image flicker
+* [/] Make separate views for the seeding and the downloading
 
 h2. 0.1
 

@@ -128,7 +128,6 @@ div.torrent {
     height: 15px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
-    color: transparent;
     background: #6b7071;
     background-image:
         -moz-linear-gradient(top, rgba(255,255,255,0.3), rgba(255,255,255,0) 2.5%, rgba(255,255,255,0)),
@@ -169,6 +168,22 @@ div.torrent {
     text-indent: 10px;
     margin-left: 2px;
     margin-right: 3px;
-    color: #fff !important;
+    color: #fff;
 }
 
+div.torrent .trans {
+    color: transparent !important;
+}
+
+#wrapper div.menu {
+    display: none;
+}
+
+#wrapper div.menu ul li {
+    display: inline;
+    padding: 8px;
+}
+
+#wrapper div.menu ul li img {
+    cursor: pointer;
+}

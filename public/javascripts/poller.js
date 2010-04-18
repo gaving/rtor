@@ -6,16 +6,48 @@ var Poller = {
         this._startPolling();
         this._loadData();
         this.events();
+        this.menu();
     },
 
     events: function() {
         $(document).bind('keydown', 'ctrl+c', function() {
-            if (confirm('Are you sure you wish to ' + ((!polling) ? 'resume' : 'pause') + ' updates?')) {
+            if (confirm('Are you sure you wish to ' + ((!polling) ? 'resume' : 'pause') + ' _updates?')) {
                 Poller.toggle();
             }
         });
-        $('.torrent-wrapper').live('click', function() {
-            /* TODO: Toggle the menu */
+        // $('.torrent-wrapper').live('click', this.buildMenu);
+    },
+
+    buildMenu: function(e) {
+        var $menu = $(this).find('.menu');
+        $('.menu').not($('#content > .menu')).not($menu).each(function() {
+            $(this).closest('.torrent').text($(this).closest('.torrent-wrapper').data('percent'));
+            $(this).remove();
+        });
+        if ($menu.length > 0) {
+            $menu.remove();
+            $(this).find('.torrent').text($(this).data('percent'));
+        } else {
+            $('.menu').clone().appendTo($(this).find('.torrent').empty()).show();
+        }
+    },
+
+    menu: function() {
+        $('li.state', '.menu').live('click', function() {
+            alert('Toggle state!');
+        });
+        $('li.remove', '.menu').live('click', function() {
+            if (confirm('Are you sure you want to remove this torrent?')) {
+                var $wrapper = $(this).closest('.torrent-wrapper');
+                $.getJSON('/torrent/erase/' + $wrapper.data('hash'), function(data) {
+                    if (data.erased) {
+                        RTOR.flash($wrapper.data('name') + " deleted");
+                        $wrapper.fadeOut("slow");
+                    } else {
+                        RTOR.flash('Error: Couldn\'t delete!');
+                    }
+                });
+            }
         });
     },
 
@@ -27,7 +59,7 @@ var Poller = {
             dataType: "json",
             success: function(data) {
                 $.each(data, function(i,item) {
-                    Poller.update(item);
+                    Poller._update(item);
                 });
             }
         });
@@ -43,7 +75,7 @@ var Poller = {
     _loadData : function() {
         _callTorrentController('torrents', {}, function(data) {
             $.each(data, function(index,item) {
-                Poller.buildRow(item);
+                Poller._buildRow(item);
             });
 
             $('#wrapper').fadeIn("slow");
@@ -57,7 +89,7 @@ var Poller = {
         return "torrent " + status;
     },
 
-    buildRow : function(item, prepend) {
+    _buildRow : function(item, prepend) {
 
         var status = this._getStatus(item);
         var $row = $('<div/>').addClass('torrent-wrapper').attr({ id: item['hash'] }).append(
@@ -67,8 +99,12 @@ var Poller = {
         ).append(
             $('<div/>').addClass(status).css({
                 width: (Math.round(parseFloat(item['percentage']))) + '%'
-            }).text(item['percentage'] + '%').attr('title', item['remaining'])
-        )
+            }).text(item['percentage'] + '%').attr('title', item['remaining'] + " remaining")
+        ).data({
+            'hash': item['hash'],
+            'percent': item['percentage'] + "%",
+            'name': item['name']
+        });
 
         if (!prepend) {
             $row.appendTo('#torrents')
@@ -76,24 +112,23 @@ var Poller = {
             $row.prependTo('#torrents')
         }
 
-        $row.addSwipeEvents().
-            bind('swipe', function(evt, touch) {
-            alert('Swipe event triggered!');
-        })
+        $row.addSwipeEvents().bind('swipe', this.buildMenu);
     },
 
-    update : function(item) {
+    _update : function(item) {
         var $row = $("#" + item.hash + ' > .torrent');
         if ($row.length > 0) {
 
             var status = this._getStatus(item);
-            $row
-                .removeClass()
-                .addClass(status)
-                .css('width', (Math.round(parseFloat(item['percentage']))) + '%')
-                .text(item['percentage'] + '%');
+            if ($row.find('.menu').length == 0) {
+                $row
+                    .removeClass()
+                    .addClass(status)
+                    .css('width', (Math.round(parseFloat(item['percentage']))) + '%')
+                    .text(item['percentage'] + '%');
+            }
         } else {
-            this.buildRow(item, true);
+            this._buildRow(item, true);
         }
     }
 }

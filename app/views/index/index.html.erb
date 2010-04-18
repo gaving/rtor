@@ -3,6 +3,7 @@
     <%= stylesheet_link_tag 'smoothness/jquery-ui-1.7.1.custom.css' %>
     <%= javascript_include_tag 'jquery/jquery.hotkeys' %>
     <%= javascript_include_tag 'jquery/jquery.doubletap' %>
+    <%= javascript_include_tag 'jquery/jquery.jnotifica' %>
     <%= javascript_include_tag 'index' %>
     <%= javascript_include_tag 'poll' %>
     <%= javascript_include_tag 'poller' %>
@@ -19,9 +20,15 @@
     <div id="spinner">
         <%= image_tag "spinner.gif" %>
     </div>
-    <div id="wrapper">
+    <div id="wrapper" class="o90">
         <div id="content">
             <div id="torrents"></div>
+            <div class="menu">
+                <ul>
+                    <li class="state"><%= image_tag "start.png" %></li>
+                    <li class="remove"><%= image_tag "delete.png" %></li>
+                </ul>
+            </div>
         </div>
     </div>
 <% end %>
