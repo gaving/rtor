@@ -4,7 +4,7 @@ Experimental rails application for controlling the ever popular rtorrent.
 
 ## Screenshots
 
-![main interface!](http://github.com/gaving/rtor/tree/master/site/1.png?raw=true)
+![main interface!](http://github.com/gaving/rtor/raw/master/site/1.png)
 
 ## Installation
 
